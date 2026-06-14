@@ -1,1536 +1,937 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bloc Expert – Firma de administrare blocuri</title>
-  <meta name="description" content="Bloc Expert ofera servicii complete de administrare blocuri si imobile pentru asociatiile de proprietari. Administrator atestat, contabilitate, servicii juridice, tehnice si de curatenie." />
-  <link rel="icon" type="image/png" href="logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy: #2E3B7B;
-      --navy-dark: #1E2A5E;
-      --navy-light: #4A5A9B;
-      --accent: #C8A84B;
-      --bg-light: #F5F6F8;
-      --bg-white: #FFFFFF;
-      --text-dark: #1A1A2E;
-      --text-mid: #3D4460;
-      --text-muted: #6B7280;
-      --border: #E2E5EF;
-      --radius: 6px;
-      --shadow: 0 2px 12px rgba(46,59,123,0.08);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text-dark);
-      background: var(--bg-white);
-      line-height: 1.65;
-      font-size: 16px;
-    }
-
-    /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg-white);
-      border-bottom: 1px solid var(--border);
-      padding: 0 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 70px;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .nav-logo img {
-      height: 44px;
-      width: auto;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-mid);
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--navy); }
-
-
-
-    /* DROPDOWN */
-    .nav-links li { position: relative; }
-
-    .dropdown-toggle {
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      user-select: none;
-    }
-
-    .dropdown-toggle::after {
-      content: '';
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      border-right: 2px solid currentColor;
-      border-bottom: 2px solid currentColor;
-      transform: rotate(45deg);
-      margin-top: -3px;
-      transition: transform 0.2s;
-    }
-
-    .nav-links li.open .dropdown-toggle::after {
-      transform: rotate(-135deg);
-      margin-top: 3px;
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: calc(100% + 8px);
-      left: 0;
-      background: var(--bg-white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-      min-width: 220px;
-      z-index: 200;
-      padding: 6px 0;
-    }
-
-    .nav-links li.open .dropdown-menu { display: block; }
-
-    .dropdown-menu a {
-      display: block;
-      padding: 10px 18px;
-      font-size: 14px;
-      color: var(--text-mid) !important;
-      text-decoration: none;
-      transition: background 0.15s, color 0.15s;
-      white-space: nowrap;
-    }
-
-    .dropdown-menu a:hover {
-      background: var(--bg-light);
-      color: var(--navy) !important;
-    }
-
-    /* SERVICII LISTA GRID */
-    .servicii-lista-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .serviciu-card {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: var(--bg-white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      text-decoration: none;
-      color: var(--text-dark);
-      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
-    }
-
-    .serviciu-card:hover {
-      box-shadow: var(--shadow);
-      transform: translateY(-2px);
-      border-color: var(--navy-light);
-    }
-
-    .serviciu-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--bg-light);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--navy);
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .serviciu-card:hover .serviciu-icon { background: var(--navy); color: #fff; }
-    .serviciu-icon svg { width: 20px; height: 20px; }
-
-    .serviciu-body { flex: 1; }
-
-    .serviciu-body h3 {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 4px;
-      line-height: 1.3;
-    }
-
-    .serviciu-body p {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-
-    .serviciu-arrow {
-      font-size: 18px;
-      color: var(--navy-light);
-      flex-shrink: 0;
-      opacity: 0;
-      transform: translateX(-4px);
-      transition: opacity 0.2s, transform 0.2s;
-    }
-
-    .serviciu-card:hover .serviciu-arrow {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    /* ZONE SECTION */
-    #zone { background: var(--bg-white); }
-
-    /* IMOBILE SECTION */
-    .imobile-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .imobil-card {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: var(--bg-white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px 20px 20px 20px;
-      text-decoration: none;
-      color: var(--text-dark);
-      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
-    }
-
-    .imobil-card:hover {
-      box-shadow: var(--shadow);
-      transform: translateY(-2px);
-      border-color: var(--navy-light);
-    }
-
-    .imobil-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--bg-light);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--navy);
-      transition: background 0.2s;
-    }
-
-    .imobil-card:hover .imobil-icon { background: var(--navy); color: #fff; }
-
-    .imobil-icon svg { width: 20px; height: 20px; }
-
-    .imobil-body { flex: 1; }
-
-    .imobil-body h3 {
-      font-size: 13.5px;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 4px;
-      line-height: 1.25;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .imobil-body p {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-
-    .imobil-arrow {
-      font-size: 18px;
-      color: var(--navy-light);
-      flex-shrink: 0;
-      opacity: 0;
-      transform: translateX(-4px);
-      transition: opacity 0.2s, transform 0.2s;
-    }
-
-    .imobil-card:hover .imobil-arrow {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .zone-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .zone-card {
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-      aspect-ratio: 4/3;
-      cursor: pointer;
-      text-decoration: none;
-      display: block;
-    }
-
-    .zone-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.35s ease;
-    }
-
-    .zone-card:hover img { transform: scale(1.05); }
-
-    .zone-card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(15,24,60,0.82) 0%, rgba(15,24,60,0.15) 55%, transparent 100%);
-      transition: background 0.3s;
-    }
-
-    .zone-card:hover .zone-card-overlay {
-      background: linear-gradient(to top, rgba(15,24,60,0.90) 0%, rgba(15,24,60,0.30) 60%, transparent 100%);
-    }
-
-    .zone-card-title {
-      position: absolute;
-      bottom: 18px;
-      left: 18px;
-      right: 50px;
-      color: #fff;
-      font-family: 'Lora', serif;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      line-height: 1.3;
-    }
-
-    .zone-card-arrow {
-      position: absolute;
-      bottom: 20px;
-      right: 18px;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transform: translateX(-6px);
-      transition: opacity 0.25s, transform 0.25s;
-    }
-
-    .zone-card:hover .zone-card-arrow {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .zone-card-arrow svg {
-      width: 14px;
-      height: 14px;
-      stroke: var(--navy-dark);
-      fill: none;
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #111827;
-      color: rgba(255,255,255,0.55);
-      font-size: 13px;
-    }
-
-    .footer-top {
-      padding: 56px 5% 44px;
-      display: grid;
-      grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr 1fr;
-      gap: 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .footer-brand img {
-      height: 60px;
-      width: auto;
-      margin-bottom: 14px;
-      display: block;
-      mix-blend-mode: lighten;
-    }
-
-    .footer-brand p {
-      font-size: 13px;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.35);
-      max-width: 210px;
-      margin-bottom: 14px;
-    }
-
-    .footer-brand .footer-mail {
-      display: inline-block;
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      font-size: 13px;
-      transition: color 0.2s;
-    }
-
-    .footer-brand .footer-mail:hover { color: #fff; }
-
-    .footer-col h4 {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.28);
-      margin-bottom: 16px;
-    }
-
-    .footer-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .footer-col ul a {
-      color: rgba(255,255,255,0.52);
-      text-decoration: none;
-      font-size: 13px;
-      transition: color 0.2s;
-    }
-
-    .footer-col ul a:hover { color: #fff; }
-
-    .footer-bottom {
-      padding: 18px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 12px;
-      color: rgba(255,255,255,0.22);
-    }
-
-    .footer-bottom a {
-      color: rgba(255,255,255,0.35);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-bottom a:hover { color: #fff; }
-
-    .footer-legal-badges {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .footer-legal-badge {
-      height: 32px;
-      width: auto;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-      display: block;
-    }
-
-    .footer-legal-badge:hover { opacity: 1; }
-
-    /* HERO */
-    .hero {
-      position: relative;
-      background-image: url('hero.jpg');
-      background-size: cover;
-      background-position: center 30%;
-      color: #fff;
-      padding: 110px 5% 100px;
-      display: flex;
-      align-items: center;
-      min-height: 580px;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(105deg, rgba(15,24,60,0.85) 0%, rgba(30,42,94,0.70) 55%, rgba(46,59,123,0.30) 100%);
-      z-index: 0;
-    }
-
-    .hero > * { position: relative; z-index: 1; }
-
-    .hero-content { flex: 1; max-width: 620px; }
-
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 18px;
-    }
-
-    .hero h1 {
-      font-family: 'Lora', serif;
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 22px;
-      color: #fff;
-    }
-
-    .hero p {
-      font-size: 17px;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.82);
-      margin-bottom: 36px;
-      max-width: 520px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: var(--accent);
-      color: var(--navy-dark);
-      padding: 13px 28px;
-      border-radius: var(--radius);
-      font-weight: 700;
-      font-size: 15px;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-
-    .btn-primary:hover { opacity: 0.88; }
-
-    .btn-outline {
-      display: inline-block;
-      border: 2px solid rgba(255,255,255,0.45);
-      color: #fff;
-      padding: 13px 28px;
-      border-radius: var(--radius);
-      font-weight: 600;
-      font-size: 15px;
-      text-decoration: none;
-      transition: border-color 0.2s, background 0.2s;
-    }
-
-    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
-
-
-
-
-    /* SECTIONS */
-    section { padding: 72px 5%; }
-
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--navy-light);
-      margin-bottom: 10px;
-    }
-
-    .section-title {
-      font-family: 'Lora', serif;
-      font-size: clamp(26px, 3.5vw, 38px);
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-
-    .section-lead {
-      font-size: 17px;
-      color: var(--text-muted);
-      max-width: 580px;
-      line-height: 1.75;
-    }
-
-    .section-header { margin-bottom: 48px; }
-
-    /* SERVICII */
-    #servicii { background: var(--bg-light); }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-    }
-
-    .service-card {
-      background: var(--bg-white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px 28px;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-
-    .service-card:hover {
-      box-shadow: var(--shadow);
-      transform: translateY(-2px);
-    }
-
-    .service-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--navy);
-      border-radius: 8px;
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .service-icon svg {
-      width: 22px;
-      height: 22px;
-      fill: none;
-      stroke: #fff;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .service-card h3 {
-      font-family: 'Lora', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 10px;
-    }
-
-    .service-card p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    /* DESPRE */
-    #despre {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .despre-text .section-lead { max-width: 100%; margin-bottom: 24px; }
-
-    .despre-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .despre-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 15px;
-      color: var(--text-mid);
-      line-height: 1.6;
-    }
-
-    .despre-list li::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-      margin-top: 7px;
-    }
-
-    .despre-card {
-      background: var(--navy);
-      color: #fff;
-      border-radius: 10px;
-      padding: 44px 40px;
-    }
-
-    .despre-card h3 {
-      font-family: 'Lora', serif;
-      font-size: 22px;
-      margin-bottom: 20px;
-      color: #fff;
-    }
-
-    .despre-card p {
-      font-size: 15px;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 16px;
-    }
-
-    .despre-card p:last-child { margin-bottom: 0; }
-
-    /* PLATI */
-    #plati { background: var(--bg-light); }
-
-    .plati-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
-
-    .plata-item {
-      background: var(--bg-white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px 24px;
-      font-size: 14px;
-      color: var(--text-mid);
-      line-height: 1.6;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .plata-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--navy);
-      flex-shrink: 0;
-      margin-top: 5px;
-    }
-
-    /* CONTRACT */
-    #contract {
-      background: var(--navy-dark);
-      color: #fff;
-      text-align: center;
-    }
-
-    #contract .section-title { color: #fff; }
-
-    #contract .section-lead {
-      color: rgba(255,255,255,0.72);
-      margin: 0 auto 14px;
-      max-width: 640px;
-    }
-
-    #contract p.contract-extra {
-      font-size: 15px;
-      color: rgba(255,255,255,0.65);
-      max-width: 580px;
-      margin: 0 auto 36px;
-      line-height: 1.75;
-    }
-
-    /* CONTACT */
-    #contact { background: var(--bg-light); }
-
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .contact-info h3 {
-      font-family: 'Lora', serif;
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: var(--text-dark);
-    }
-
-    .contact-info p {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.75;
-      margin-bottom: 24px;
-    }
-
-    .contact-detail {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 15px;
-      color: var(--text-mid);
-      margin-bottom: 12px;
-    }
-
-    .contact-detail svg {
-      width: 18px;
-      height: 18px;
-      stroke: var(--navy);
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      flex-shrink: 0;
-    }
-
-    /* FORM */
-    .contact-form {
-      background: var(--bg-white);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 36px 32px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .form-group {
-      margin-bottom: 18px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-mid);
-      margin-bottom: 6px;
-      letter-spacing: 0.01em;
-    }
-
-    .form-group label span { color: #c0392b; }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 11px 14px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      color: var(--text-dark);
-      background: var(--bg-white);
-      transition: border-color 0.2s, box-shadow 0.2s;
-      outline: none;
-      -webkit-appearance: none;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--navy-light);
-      box-shadow: 0 0 0 3px rgba(74,90,155,0.12);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    .form-submit {
-      width: 100%;
-      padding: 13px;
-      background: var(--navy);
-      color: #fff;
-      border: none;
-      border-radius: var(--radius);
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s;
-      margin-top: 4px;
-    }
-
-    .form-submit:hover { background: var(--navy-dark); }
-
-    .form-notice {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 12px;
-      text-align: center;
-    }
-
-    /* FOOTER */
-
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .hero { padding: 70px 5%; min-height: 460px; }
-      #despre { grid-template-columns: 1fr; gap: 40px; }
-      .contact-wrap { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .zone-grid { grid-template-columns: repeat(2, 1fr); }
-      .zone-card[style*="span 2"] { grid-column: span 2; }
-      .footer-top { grid-template-columns: 1fr 1fr; }
-      .footer-brand { grid-column: span 2; }
-      .servicii-lista-grid { grid-template-columns: 1fr 1fr; }
-      .imobile-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .stats-bar { gap: 32px; }
-      section { padding: 52px 5%; }
-      .zone-grid { grid-template-columns: 1fr; }
-      .zone-card[style*="span 2"] { grid-column: span 1; }
-      .footer-top { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr 1fr 1fr; }
-      .servicii-lista-grid { grid-template-columns: 1fr; }
-      .imobile-grid { grid-template-columns: 1fr; }
-    }
-  </style>
-  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velichi Luca — Automatizări AI, Chatbot, Marketing Digital & Site-uri pentru Afaceri din Galați și România</title>
+<meta name="description" content="Velichi Luca — specialist în automatizări AI pentru afaceri din Galați și România. Implementez chatboți, agenți vocali, marketing automatizat, site-uri profesionale. Scalează afacerea ta, reduce costurile, câștigă mai mulți clienți. Consultanță gratuită 30 minute.">
+<meta name="keywords" content="
+automatizari AI, automatizari AI Galati, automatizari AI Romania, implementare AI afaceri, solutii AI business,
+chatbot afaceri, chatbot romania, chatbot galati, agent vocal AI, preluare apeluri automat, asistent vocal AI,
+marketing digital Galati, marketing digital Romania, marketing pentru afaceri mici, promovare online afaceri,
+social media automatizat, postari automate instagram, postare automata facebook, content marketing AI,
+email marketing automatizat, campanii email automate, newsletter automat, secvente email automate,
+lead generation, generare lead-uri, atragere clienti noi, clienti potentiali, prospectare automata,
+site web profesional Galati, creare site web Galati, web design Galati, web development Romania,
+SEO Galati, optimizare Google, pozitionare Google, aparitie pe Google, ranking Google,
+automatizare procese business, flux de lucru automatizat, workflow automation, optimizare operatiuni,
+CRM automatizat, management clienti automat, urmarire lead-uri, pipeline vanzari automat,
+follow-up automat clienti, mesaje automate whatsapp, raspuns automat mesaje, notificari automate,
+rezervari online automate, programari automate, calendar automat, booking system,
+specialist marketing, expert marketing online, servicii marketing, agentie marketing, consultant marketing,
+marketing pentru firme, marketing pentru afaceri mici, marketing pentru startup, strategie de marketing,
+plan de marketing, promovare afacere, promovare firma, promovare online, marketing digital, marketing local,
+marketing b2b, marketing b2c, externalizare marketing, manager marketing, director marketing fractionat,
+servicii promovare, solutii marketing, campanii marketing, marketing pentru magazine online,
+marketing pentru restaurante, marketing pentru clinici, marketing pentru saloane, marketing pentru constructii,
+marketing pentru avocati, marketing pentru contabili, marketing pentru imobiliari, marketing pentru turism,
+marketing pentru firme locale, consultant promovare, specialist promovare online, promovare business,
+marketing performant, marketing orientat pe vanzari, servicii de crestere afaceri, strategie de crestere,
+promovare profesionala, marketing cu rezultate, marketing bazat pe performanta, marketing pentru antreprenori,
+marketing online Romania, social media manager, administrare facebook, administrare instagram,
+administrare tiktok, gestionare social media, servicii social media, marketing social media,
+promovare facebook, promovare instagram, promovare tiktok, specialist social media, agentie social media,
+creare continut social media, content creator, creator continut pentru firme, postari facebook,
+postari instagram, administrare pagina facebook, gestionare retele sociale, strategie social media,
+management social media, freelancer social media, consultant social media, reclame facebook,
+reclame instagram, reclame tiktok, promovare organica, branding pe social media,
+continut video pentru firme, reels pentru afaceri, videoclipuri promotionale, administrare linkedin,
+marketing linkedin, creare continut video, social media pentru firme, social media pentru restaurante,
+servicii seo, specialist seo, expert seo, agentie seo, optimizare seo, optimizare site, seo local,
+seo romania, consultanta seo, audit seo, audit website, optimizare google, pozitionare google,
+prima pagina google, crestere trafic organic, trafic din google, optimizare cuvinte cheie,
+seo pentru firme, seo pentru afaceri locale, seo pentru ecommerce, seo tehnic, link building,
+optimizare viteza site, optimizare continut, creare articole seo, redactare articole seo,
+cum apar pe google, indexare google, optimizare google maps, google business profile seo,
+seo pentru startup, seo pentru restaurante, seo pentru clinici, seo pentru avocati, seo profesional,
+google ads, specialist google ads, expert google ads, agentie google ads, servicii google ads,
+administrare google ads, campanii google ads, reclame google, promovare google, ppc specialist,
+consultant google ads, optimizare google ads, reclame search, reclame display, campanii ppc,
+trafic platit, generare lead-uri google, management google ads, reclame pentru firme,
+campanii performante, google ads romania, specialist ppc, agentie ppc, promovare platita,
+trafic instant site, reclame online, publicitate google, optimizare conversii, lead generation google,
+creare site, realizare site, dezvoltare web, web design, creare website, site de prezentare,
+magazin online, dezvoltare magazin online, creare magazin online, web developer, freelancer web design,
+agentie web design, servicii web design, refacere site, redesign website, site profesional,
+website profesional, creare site firma, creare site business, dezvoltare wordpress, website wordpress,
+creare landing page, landing page profesional, optimizare website, site rapid, site responsive,
+website modern, dezvoltare ecommerce, creare ecommerce, web designer, programator web,
+website pentru afaceri, site pentru restaurante, site pentru clinici, site pentru avocati,
+site pentru imobiliari, site pentru constructii, website personalizat, site optimizat seo,
+website optimizat seo, creare pagina web, design site, website performant, website pentru lead-uri,
+site de conversie, dezvoltare digitala, cum gasesc clienti pentru afacerea mea, cum imi promovez firma,
+cum cresc vanzarile online, marketing pentru afacere noua, de ce nu am clienti pe site,
+cum imi scalez afacerea, cum sa am mai multi clienti, cum sa nu mai pierd clienti,
+cum sa digitalizez afacerea, transformare digitala afacere mica, digitalizare firma Romania,
+cum sa economisesc timp in afacere, agentie marketing Galati, specialist marketing Galati,
+social media manager Galati, Velichi Luca, velichi luca galati, automatizari galati, AI galati,
+servicii digitale Galati, agentie digitala Galati, agentie AI Romania, freelancer AI Romania
+">
+<meta name="author" content="Velichi Luca">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="language" content="Romanian">
+<meta name="geo.region" content="RO-GL">
+<meta name="geo.placename" content="Galați, România">
+<meta name="geo.position" content="45.4353;28.0079">
+<meta name="ICBM" content="45.4353, 28.0079">
+<meta name="rating" content="general">
+<meta name="revisit-after" content="7 days">
+<link rel="canonical" href="https://velichi-luca.agency/">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+<!-- Favicon -->
+<link rel="icon" type="image/jpeg" href="1123.jpg">
+<link rel="apple-touch-icon" href="1123.jpg">
+<link rel="shortcut icon" href="1123.jpg">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://velichi-luca.agency/">
+<meta property="og:title" content="Velichi Luca — Automatizări AI, Marketing & Site-uri pentru Afaceri din România">
+<meta property="og:description" content="Implementez automatizări AI personalizate care îți cresc profitul, îți aduc mai mulți clienți și îți eliberează timpul. Chatboți, marketing automatizat, site-uri profesionale. Galați & România.">
+<meta property="og:image" content="https://velichi-luca.agency/eu1.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Velichi Luca — Specialist Automatizări AI">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:site_name" content="Velichi Luca — Automatizări AI">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@velichiluca">
+<meta name="twitter:title" content="Velichi Luca — Automatizări AI pentru Afaceri din România">
+<meta name="twitter:description" content="Chatboți, marketing automatizat, site-uri profesionale pentru afaceri locale. Galați & România.">
+<meta name="twitter:image" content="https://velichi-luca.agency/eu1.png">
+
+<!-- Schema.org — LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["ProfessionalService", "LocalBusiness"],
+  "name": "Velichi Luca — Automatizări AI",
+  "alternateName": ["Velichi Luca Agency", "AI Automatizari Galati", "Automatizari AI Romania"],
+  "description": "Specialist în automatizări AI pentru afaceri locale din Galați și România. Implementez chatboți, agenți vocali AI, marketing automatizat, site-uri profesionale. Ajut afacerile să crească prin digitalizare și inteligență artificială.",
+  "url": "https://velichi-luca.agency",
+  "telephone": "+40770680071",
+  "email": "luca.velichi@gmail.com",
+  "image": "https://velichi-luca.agency/eu1.png",
+  "logo": "https://velichi-luca.agency/eu1.png",
+  "priceRange": "€€",
+  "currenciesAccepted": "RON, EUR",
+  "paymentAccepted": "Transfer bancar, Cash",
+  "openingHours": "Mo-Su 09:00-21:00",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Galați",
+    "addressRegion": "Galați",
+    "postalCode": "800000",
+    "addressCountry": "RO"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "45.4353",
+    "longitude": "28.0079"
+  },
+  "areaServed": [
+    {"@type": "City", "name": "Galați"},
+    {"@type": "City", "name": "București"},
+    {"@type": "City", "name": "Cluj-Napoca"},
+    {"@type": "City", "name": "Iași"},
+    {"@type": "City", "name": "Brăila"},
+    {"@type": "Country", "name": "România"}
+  ],
+  "serviceType": [
+    "Automatizări AI",
+    "Chatbot AI",
+    "Agent Vocal AI",
+    "Marketing Automatizat",
+    "Dezvoltare Web",
+    "SEO",
+    "Lead Generation",
+    "Automatizare Procese Business",
+    "Social Media Automatizat",
+    "Email Marketing Automatizat",
+    "CRM Automatizat",
+    "Digitalizare Afaceri"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicii Automatizări AI",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Chatbot & Asistent AI",
+          "description": "Asistent AI care răspunde clienților 24/7 — rezervări, întrebări, oferte. Fără să angajezi pe nimeni."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Agent Vocal AI",
+          "description": "Robot telefonic AI care preia apeluri, înregistrează cereri și trimite notificări instant."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Automatizări de Flux",
+          "description": "Automatizarea completă a sarcinilor repetitive: rapoarte, follow-up-uri, notificări, facturare."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Marketing Automatizat",
+          "description": "Conținut social media, campanii email și outreach generate și publicate automat cu AI."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Site Web Profesional",
+          "description": "Site-uri profesionale optimizate pentru Google, construite să vândă și să convertească vizitatorii în clienți."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Lead Generation Automatizat",
+          "description": "Sisteme automate de atragere și calificare a clienților potențiali pentru afacerea ta."
+        }
+      }
+    ]
+  },
+  "sameAs": ["https://instagram.com/velichi.luca"],
+  "founder": {
+    "@type": "Person",
+    "name": "Velichi Luca",
+    "jobTitle": "Specialist Automatizări AI & Marketing Digital",
+    "description": "Specialist în automatizări AI cu experiență în implementarea de soluții digitale pentru afaceri locale din România.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Galați",
+      "addressCountry": "RO"
+    },
+    "sameAs": ["https://instagram.com/velichi.luca"]
+  }
+}
+</script>
+
+<!-- Schema.org — FAQ extins -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Cum îmi scalez afacerea cu AI?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Prin implementarea de automatizări AI personalizate — chatboți, fluxuri automate, marketing automatizat — care preiau sarcinile repetitive și îți eliberează timp pentru creștere. Velichi Luca implementează aceste soluții pentru afaceri din Galați și România."}
+    },
+    {
+      "@type": "Question",
+      "name": "Ce sunt automatizările AI pentru afaceri?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Automatizările AI sunt sisteme care preiau sarcini repetitive din afacerea ta: răspund la mesaje, urmăresc lead-uri, trimit emailuri, gestionează rezervări, publică pe social media — toate fără intervenție umană, 24/7."}
+    },
+    {
+      "@type": "Question",
+      "name": "Cât costă un chatbot pentru afacerea mea?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Prețul variază în funcție de complexitate și nevoile afacerii tale. Programează un apel gratuit de 30 minute cu Velichi Luca și primești o ofertă personalizată."}
+    },
+    {
+      "@type": "Question",
+      "name": "Cum îmi cresc numărul de clienți cu AI?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Prin sisteme de lead generation automatizat, follow-up automat și chatboți care convertesc vizitatorii în clienți 24/7. Niciun apel ratat, niciun mesaj ignorat."}
+    },
+    {
+      "@type": "Question",
+      "name": "Există servicii de automatizare AI în Galați?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Da. Velichi Luca oferă servicii complete de automatizare AI personalizate pentru afaceri din Galați și toată România."}
+    },
+    {
+      "@type": "Question",
+      "name": "Cum îmi promovez afacerea online în Galați?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Prin combinația de site profesional optimizat pentru Google, marketing pe social media automatizat și campanii de email marketing. Velichi Luca oferă toate aceste servicii integrate."}
+    },
+    {
+      "@type": "Question",
+      "name": "Ce este un agent vocal AI și cum mă ajută?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Un agent vocal AI este un robot care preia automat apelurile telefonice în afara programului, înregistrează cererile clienților și îți trimite notificări. Astfel nu mai pierzi niciun client care sună noaptea sau în weekend."}
+    },
+    {
+      "@type": "Question",
+      "name": "Cum îmi digitalizez afacerea?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Digitalizarea afacerii începe cu un site profesional, continuă cu automatizarea proceselor interne și se extinde cu marketing digital și chatboți. Velichi Luca oferă un plan complet de digitalizare personalizat."}
+    },
+    {
+      "@type": "Question",
+      "name": "Cum reduc costurile afacerii mele?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Prin automatizarea sarcinilor repetitive care consumă timp și bani: răspuns la mesaje, urmărire comenzi, trimitere facturi, postare pe social media. Automatizările AI fac toată munca la un cost fix lunar."}
+    },
+    {
+      "@type": "Question",
+      "name": "Cum îmi fac marketing pe social media automat?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Prin sisteme AI care generează conținut, programează postările și le publică automat pe Instagram, Facebook și alte platforme la orele cu cel mai mare engagement."}
+    },
+    {
+      "@type": "Question",
+      "name": "Am nevoie de cunoștințe tehnice pentru automatizări AI?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Nu. Velichi Luca se ocupă de tot — de la analiză la implementare și integrare. Tu nu trebuie să schimbi nimic radical în afacerea ta, adăugăm AI peste ce funcționează deja."}
+    },
+    {
+      "@type": "Question",
+      "name": "Cât durează implementarea unui sistem de automatizare?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Depinde de complexitate — de la câteva zile pentru un chatbot simplu, la 2-3 săptămâni pentru sisteme complete de automatizare a fluxului de lucru."}
+    }
+  ]
+}
+</script>
+
+<!-- Schema.org — BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Acasă", "item": "https://velichi-luca.agency/"},
+    {"@type": "ListItem", "position": 2, "name": "Servicii Automatizări AI", "item": "https://velichi-luca.agency/#servicii"},
+    {"@type": "ListItem", "position": 3, "name": "Programează Apel", "item": "https://velichi-luca.agency/form.html"}
+  ]
+}
+</script>
+
+<!-- Schema.org — Person -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Velichi Luca",
+  "jobTitle": "Specialist Automatizări AI & Marketing Digital",
+  "description": "Specialist în automatizări AI și marketing digital pentru afaceri locale din Galați și România. Implementez soluții personalizate de chatboți, marketing automatizat și digitalizare.",
+  "url": "https://velichi-luca.agency",
+  "telephone": "+40770680071",
+  "email": "luca.velichi@gmail.com",
+  "image": "https://velichi-luca.agency/eu1.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Galați",
+    "addressCountry": "RO"
+  },
+  "knowsAbout": [
+    "Automatizări AI", "Chatbot", "Marketing Digital", "SEO", "Dezvoltare Web",
+    "Lead Generation", "Email Marketing", "Social Media Marketing", "n8n", "Make.com",
+    "Voiceflow", "Inteligență Artificială", "Digitalizare Afaceri", "Sales Automation"
+  ],
+  "sameAs": ["https://instagram.com/velichi.luca"]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --blue: #2563eb; --white: #f8fafc; --gray: #94a3b8; }
+html { scroll-behavior: smooth; }
+body { background: #000; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.6; overflow-x: hidden; }
+
+#stars-wrap { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.s1 { position: absolute; width: 1px; height: 1px; background: transparent; box-shadow: 22px 145px #fff,68px 380px #fff,105px 62px #fff,45px 520px #fff,88px 270px #fff,130px 710px #fff,15px 830px #fff,175px 440px #fff,55px 190px #fff,140px 610px #fff,220px 85px #fff,310px 340px #fff,265px 620px #fff,395px 180px #fff,340px 760px #fff,280px 490px #fff,420px 55px #fff,360px 880px #fff,510px 130px #fff,570px 460px #fff,630px 290px #fff,545px 720px #fff,660px 170px #fff,740px 200px #fff,810px 480px #fff,855px 630px #fff,940px 110px #fff,1010px 370px #fff,1060px 230px #fff,1100px 700px #fff,1140px 300px #fff,1200px 560px #fff,1240px 420px #fff,1320px 130px #fff,1380px 450px #fff,1460px 100px #fff,1500px 380px #fff,1520px 250px #fff,1540px 480px #fff; animation: twinkle1 1.8s ease-in-out infinite alternate; }
+.s1b { position: absolute; width: 1px; height: 1px; background: transparent; box-shadow: 35px 310px #fff,95px 480px #fff,160px 140px #fff,75px 700px #fff,200px 780px #fff,300px 200px #fff,385px 540px #fff,445px 300px #fff,490px 790px #fff,555px 220px #fff,625px 510px #fff,680px 640px #fff,910px 270px #fff,1005px 430px #fff,1125px 600px #fff,1210px 720px #fff,1295px 490px #fff,1365px 760px #fff,1445px 320px #fff,1505px 160px #fff,1535px 520px #fff; animation: twinkle1 2.3s ease-in-out infinite alternate-reverse; }
+.s2 { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: transparent; box-shadow: 80px 230px rgba(180,210,255,.9),190px 510px rgba(180,210,255,.9),320px 140px rgba(180,210,255,.9),450px 620px rgba(180,210,255,.9),570px 310px rgba(180,210,255,.9),690px 740px rgba(180,210,255,.9),810px 180px rgba(180,210,255,.9),930px 530px rgba(180,210,255,.9),1070px 600px rgba(180,210,255,.9),1190px 480px rgba(180,210,255,.9),1310px 350px rgba(180,210,255,.9),1430px 200px rgba(180,210,255,.9),1540px 400px rgba(200,220,255,.9),150px 680px rgba(200,220,255,.9),400px 810px rgba(200,220,255,.9),650px 150px rgba(200,220,255,.9),760px 650px rgba(200,220,255,.9); animation: twinkle2 2.1s ease-in-out infinite alternate; }
+.s3 { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: transparent; box-shadow: 110px 190px rgba(150,200,255,1),340px 430px rgba(255,230,180,1),570px 110px rgba(200,180,255,1),760px 580px rgba(150,200,255,1),950px 220px rgba(255,230,180,1),1140px 340px rgba(200,180,255,1),1320px 160px rgba(150,200,255,1),1470px 280px rgba(255,230,180,1),230px 290px rgba(150,200,255,1),420px 680px rgba(200,180,255,1); animation: twinkle3 1.5s ease-in-out infinite alternate; }
+@keyframes twinkle1 { 0%{opacity:.15} 50%{opacity:.7} 100%{opacity:.25} }
+@keyframes twinkle2 { 0%{opacity:.2} 50%{opacity:.9} 100%{opacity:.35} }
+@keyframes twinkle3 { 0%{opacity:.3} 50%{opacity:1} 100%{opacity:.4} }
+
+#wrap { position: relative; z-index: 2; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(0,0,0,.75); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,.05); }
+.logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--white); text-decoration: none; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { color: var(--gray); font-size: .9rem; text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--white); }
+.nav-cta { background: var(--blue); color: var(--white) !important; padding: 10px 22px; border-radius: 8px; font-size: .88rem !important; font-weight: 500; }
+.nav-cta:hover { background: #1d4ed8 !important; }
+
+/* Hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all .3s; display: block; }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Mobile menu */
+.mobile-menu {
+  display: none; position: fixed; top: 61px; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,.97); backdrop-filter: blur(20px);
+  z-index: 999; flex-direction: column; align-items: center; justify-content: center;
+  gap: 32px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: var(--white); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem; font-weight: 700; text-decoration: none; letter-spacing: -0.02em; transition: color .2s; }
+.mobile-menu a:hover { color: #60a5fa; }
+.mobile-menu .m-cta { background: var(--blue); color: var(--white) !important; padding: 14px 36px; border-radius: 10px; font-size: 1rem !important; }
+
+/* Mobile sticky CTA */
+.mobile-cta-sticky {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 998;
+  padding: 16px 20px; background: rgba(0,0,0,.9); backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.mobile-cta-sticky a { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--blue); color: #fff; padding: 14px; border-radius: 10px; font-size: .95rem; font-weight: 600; text-decoration: none; width: 100%; }
+
+#hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 24px; position: relative; overflow: hidden; }
+#galaxy-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+.hero-inner { position: relative; z-index: 4; max-width: 820px; }
+.badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(37,99,235,.18); border: 1px solid rgba(37,99,235,.4); border-radius: 100px; padding: 6px 16px; font-size: .82rem; font-weight: 500; color: #93c5fd; margin-bottom: 28px; animation: up .8s ease both; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #60a5fa; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.5)} }
+h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(2.4rem,5vw,4rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 24px; animation: up .8s .15s ease both; }
+h1 em { color: #60a5fa; font-style: normal; }
+.sub { font-size: 1.1rem; color: var(--gray); max-width: 560px; margin: 0 auto 40px; font-weight: 300; line-height: 1.75; animation: up .8s .3s ease both; }
+.btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: up .8s .45s ease both; }
+@keyframes up { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+.btn-p { background: var(--blue); color: #fff; padding: 14px 30px; border-radius: 10px; font-size: .95rem; font-weight: 500; text-decoration: none; transition: background .2s,transform .15s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-p:hover { background: #1d4ed8; transform: translateY(-2px); }
+.btn-s { background: rgba(255,255,255,.06); color: var(--white); border: 1px solid rgba(255,255,255,.12); padding: 14px 30px; border-radius: 10px; font-size: .95rem; font-weight: 500; text-decoration: none; transition: background .2s,transform .15s; }
+.btn-s:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
+.ticker-wrap { position: absolute; bottom: 0; left: 0; right: 0; border-top: 1px solid rgba(255,255,255,.07); background: rgba(0,0,0,.6); overflow: hidden; padding: 16px 0; z-index: 5; }
+.ticker { display: flex; gap: 56px; animation: tick 25s linear infinite; white-space: nowrap; width: max-content; }
+.ticker span { font-size: .82rem; color: var(--gray); text-transform: uppercase; letter-spacing: .05em; flex-shrink: 0; }
+.ticker .d { color: #60a5fa; }
+@keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+section { position: relative; z-index: 2; }
+.inner { padding: 110px 48px; max-width: 1200px; margin: 0 auto; }
+.divider { border-top: 1px solid rgba(255,255,255,.06); }
+.lbl { font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #60a5fa; margin-bottom: 14px; }
+h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 16px; }
+.desc { color: var(--gray); max-width: 560px; font-size: 1rem; font-weight: 300; line-height: 1.7; margin-bottom: 64px; }
+
+/* ═══ DESPRE MINE ═══ */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-img-wrap { position: relative; }
+.about-img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: center 10%;
+  height: 640px;
+  filter: grayscale(100%) contrast(1.05);
+  display: block;
+}
+.about-img-border {
+  position: absolute; inset: -1px;
+  border-radius: 21px;
+  border: 1px solid rgba(255,255,255,.1);
+  pointer-events: none;
+}
+.about-text .lbl { margin-bottom: 14px; }
+.about-text h2 { margin-bottom: 20px; }
+.about-text p { color: var(--gray); font-size: 1rem; font-weight: 300; line-height: 1.8; margin-bottom: 16px; }
+.about-text p strong { color: var(--white); font-weight: 600; }
+.about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.about-tag { background: rgba(37,99,235,.12); border: 1px solid rgba(37,99,235,.3); color: #93c5fd; padding: 6px 14px; border-radius: 100px; font-size: .82rem; font-weight: 500; }
+
+/* ═══ SERVICII cu poză ═══ */
+.services-top { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 64px; }
+.services-text h2 { margin-bottom: 16px; }
+.services-text p { color: var(--gray); font-size: 1rem; font-weight: 300; line-height: 1.75; }
+.services-img-wrap { position: relative; }
+.services-img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: center 15%;
+  height: 640px;
+  display: block;
+  margin-left: auto;
+}
+.services-img-border {
+  position: absolute; inset: -1px;
+  border-radius: 21px;
+  border: 1px solid rgba(255,255,255,.1);
+  pointer-events: none;
+}
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 20px; }
+.card { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 32px; opacity: 0; transform: translateY(30px); transition: opacity .6s ease,transform .6s ease,border-color .3s,background .3s; }
+.card.on { opacity: 1; transform: translateY(0); }
+.card:hover { border-color: rgba(37,99,235,.5); background: rgba(37,99,235,.06); transform: translateY(-4px) !important; }
+.card-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .75rem; font-weight: 700; color: #60a5fa; letter-spacing: .1em; margin-bottom: 14px; }
+.card h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+.card p { color: var(--gray); font-size: .92rem; line-height: 1.65; font-weight: 300; }
+
+.steps { display: flex; flex-direction: column; }
+.step { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 40px 0; border-bottom: 1px solid rgba(255,255,255,.06); opacity: 0; transform: translateX(-20px); transition: opacity .5s ease,transform .5s ease; }
+.step.on { opacity: 1; transform: translateX(0); }
+.sn { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 3rem; font-weight: 800; color: rgba(37,99,235,.3); line-height: 1; }
+.step h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+.step p { color: var(--gray); font-size: .95rem; font-weight: 300; line-height: 1.7; max-width: 560px; }
+
+.wgrid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 16px; }
+.wcard { padding: 28px; border: 1px solid rgba(255,255,255,.07); border-radius: 14px; background: rgba(255,255,255,.02); opacity: 0; transform: translateY(20px); transition: opacity .5s ease,transform .5s ease; }
+.wcard.on { opacity: 1; transform: translateY(0); }
+.wcard .num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2rem; font-weight: 800; color: #60a5fa; margin-bottom: 8px; }
+.wcard h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.wcard p { color: var(--gray); font-size: .88rem; line-height: 1.6; font-weight: 300; }
+
+.tgrid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; margin-bottom: 48px; }
+.tcard { padding: 28px; border: 1px solid rgba(255,255,255,.07); border-radius: 14px; background: rgba(255,255,255,.02); opacity: 0; transform: translateY(20px); transition: opacity .5s ease,transform .5s ease; text-align: center; }
+.tcard.on { opacity: 1; transform: translateY(0); }
+.tcard .big { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.8rem; font-weight: 800; color: #60a5fa; line-height: 1; margin-bottom: 8px; }
+.tcard p { color: var(--gray); font-size: .88rem; line-height: 1.6; font-weight: 300; }
+.btn-insta { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); color: var(--white); padding: 14px 28px; border-radius: 10px; text-decoration: none; font-size: .95rem; font-weight: 500; transition: background .2s,border-color .2s,transform .15s; }
+.btn-insta:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
+
+.contact-box { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+.cleft p { color: var(--gray); font-size: .95rem; font-weight: 300; line-height: 1.7; margin-bottom: 40px; }
+.clinks { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+.clink { display: flex; align-items: center; gap: 14px; padding: 16px 20px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; text-decoration: none; color: var(--white); font-size: .92rem; font-weight: 500; transition: border-color .2s,background .2s,transform .2s; }
+.clink:hover { border-color: rgba(37,99,235,.5); background: rgba(37,99,235,.08); transform: translateX(4px); }
+.clink-sub { color: var(--gray); font-size: .8rem; display: block; font-weight: 300; }
+.cright { display: flex; flex-direction: column; gap: 16px; }
+.cright-card { padding: 32px; border: 1px solid rgba(255,255,255,.08); border-radius: 16px; background: rgba(255,255,255,.03); text-align: center; }
+.cright-card h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+.cright-card p { color: var(--gray); font-size: .88rem; font-weight: 300; line-height: 1.6; margin-bottom: 20px; }
+.btn-apel { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--blue); color: #fff; padding: 14px 28px; border-radius: 10px; font-size: .95rem; font-weight: 500; text-decoration: none; transition: background .2s,transform .15s; width: 100%; }
+.btn-apel:hover { background: #1d4ed8; transform: translateY(-2px); }
+.btn-wa { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25d366; color: #fff; padding: 14px 28px; border-radius: 10px; font-size: .95rem; font-weight: 500; text-decoration: none; transition: background .2s,transform .15s; width: 100%; }
+.btn-wa:hover { background: #1eb855; transform: translateY(-2px); }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 12px; }
+.faq-item { border: 1px solid rgba(255,255,255,.08); border-radius: 14px; overflow: hidden; background: rgba(255,255,255,.02); }
+.faq-q { display: flex; justify-content: space-between; align-items: center; padding: 22px 28px; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 1rem; transition: background .2s; gap: 16px; }
+.faq-q:hover { background: rgba(255,255,255,.04); }
+.faq-arrow { color: #60a5fa; font-size: 1.1rem; flex-shrink: 0; transition: transform .3s; }
+.faq-q.open .faq-arrow { transform: rotate(180deg); }
+.faq-a { display: none; padding: 0 28px 22px; color: var(--gray); font-size: .95rem; font-weight: 300; line-height: 1.7; }
+.faq-a.open { display: block; }
+
+/* FOOTER */
+footer { border-top: 1px solid rgba(255,255,255,.07); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
+footer p { color: var(--gray); font-size: .82rem; }
+
+/* MOBILE */
+@media(max-width:768px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .mobile-cta-sticky { display: block; }
+
+  #hero { height: 100svh; padding: 0 20px; padding-bottom: 80px; }
+  h1 { font-size: clamp(2rem,8vw,3rem); }
+  .sub { font-size: 1rem; }
+  .btns { flex-direction: column; align-items: center; }
+  .btn-p, .btn-s { width: 100%; max-width: 320px; justify-content: center; }
+
+  .inner { padding: 70px 20px; }
+  h2 { font-size: clamp(1.6rem,6vw,2.2rem); }
+  .desc { margin-bottom: 40px; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-img { height: 480px; max-width: 100%; }
+  .services-top { grid-template-columns: 1fr; gap: 40px; }
+  .services-img { height: 480px; max-width: 100%; margin-left: 0; }
+
+  .grid { grid-template-columns: 1fr; }
+  .wgrid { grid-template-columns: 1fr 1fr; }
+  .tgrid { grid-template-columns: 1fr 1fr; }
+
+  .step { grid-template-columns: 50px 1fr; gap: 16px; padding: 28px 0; }
+  .sn { font-size: 2rem; }
+
+  .contact-box { grid-template-columns: 1fr; gap: 32px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 20px; padding-bottom: 100px; }
+
+  .faq-q { padding: 18px 20px; font-size: .95rem; }
+  .faq-a { padding: 0 20px 18px; }
+}
+@media(max-width:480px) {
+  .wgrid { grid-template-columns: 1fr; }
+  .tgrid { grid-template-columns: 1fr; }
+  .badge { font-size: .75rem; padding: 5px 12px; }
+  .about-tags { gap: 8px; }
+  .about-tag { font-size: .78rem; }
+}
+</style>
 </head>
 <body>
 
-<!-- NAV -->
+<div id="stars-wrap">
+  <div class="s1"></div><div class="s1b"></div>
+  <div class="s2"></div><div class="s3"></div>
+</div>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(10,10,20,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.1);padding:14px 48px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+  <p style="color:#cbd5e1;font-size:.85rem;font-weight:300;margin:0;flex:1;min-width:200px">
+    Folosim cookie-uri pentru a îmbunătăți experiența pe site. 
+    <a href="cookies.html" style="color:#60a5fa;text-decoration:none">Află mai multe</a>
+  </p>
+  <div style="display:flex;gap:10px;flex-shrink:0">
+    <button onclick="refuzCookies()" style="padding:8px 18px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:transparent;color:#94a3b8;font-size:.83rem;font-weight:500;cursor:pointer">Refuz</button>
+    <button onclick="acceptCookies()" style="padding:8px 18px;border-radius:8px;border:none;background:#2563eb;color:#fff;font-size:.83rem;font-weight:600;cursor:pointer">Accept</button>
+  </div>
+</div>
+
+<div id="wrap">
 <nav>
-  <a href="#" class="nav-logo">
-    <img src="logo.png" alt="Bloc Expert" />
-  </a>
-  <ul class="nav-links">
-    <li class="has-dropdown">
-      <span class="dropdown-toggle">Administrare blocuri</span>
-      <div class="dropdown-menu">
-        <a href="pachetstart.html">Administrare bloc — Pachet Start</a>
-        <a href="sector1.html">Administrare blocuri Sector 1</a>
-        <a href="sector2.html">Administrare blocuri Sector 2</a>
-        <a href="sector3.html">Administrare blocuri Sector 3</a>
-        <a href="sector4.html">Administrare blocuri Sector 4</a>
-        <a href="sector5.html">Administrare blocuri Sector 5</a>
-        <a href="sector6.html">Administrare blocuri Sector 6</a>
-        <a href="ilfov.html">Administrare blocuri Ilfov</a>
-        <a href="popesti.html">Administrare blocuri Popesti-Leordeni</a>
-        <a href="voluntari.html">Administrare blocuri Voluntari</a>
-        <a href="ploiesti.html">Administrare blocuri Ploiesti</a>
-      </div>
-    </li>
-    <li class="has-dropdown">
-      <span class="dropdown-toggle">Administrare imobile</span>
-      <div class="dropdown-menu">
-        <a href="administrareinfo.html">Administrare imobile info</a>
-        <a href="imobil1.html">Administrare imobile Sector 1</a>
-        <a href="imobil2.html">Administrare imobile Sector 2</a>
-        <a href="imobil3.html">Administrare imobile Sector 3</a>
-        <a href="imobil4.html">Administrare imobile Sector 4</a>
-        <a href="imobil5.html">Administrare imobile Sector 5</a>
-        <a href="imobil6.html">Administrare imobile Sector 6</a>
-        <a href="imobililfov.html">Administrare imobile Ilfov</a>
-        <a href="imobilpopesti.html">Administrare imobile Popesti-Leordeni</a>
-        <a href="imobilvoluntar.html">Administrare imobile Voluntari</a>
-        <a href="imobilploiesti.html">Administrare imobile Ploiesti</a>
-      </div>
-    </li>
-    <li class="has-dropdown">
-      <span class="dropdown-toggle">Servicii</span>
-      <div class="dropdown-menu">
-        <a href="administrare-financiara.html">Administrare financiara</a>
-        <a href="administrare-fiscala.html">Administrare fiscala</a>
-        <a href="administrare-tehnica.html">Administrare tehnica</a>
-        <a href="intretinere-reparatii.html">Intretinere si mici reparatii</a>
-        <a href="management-proiect.html">Management de proiect</a>
-        <a href="monitorizare-tehnica.html">Monitorizare tehnica</a>
-        <a href="curatenie-blocuri.html">Curatenie blocuri</a>
-        <a href="servicii-juridice.html">Servicii juridice</a>
-        <a href="soft-administrare-blocuri.html">Soft administrare blocuri</a>
-      </div>
-    </li>
-    <li><a href="administrator.html">Administrator bloc</a></li>
-    <li><a href="blog.html">Blog</a></li>
-    <li><a href="legislatie.html">Legislatie</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <a href="#" class="logo">Velichi Luca</a>
+  <div class="nav-links">
+    <a href="#despre">Despre</a>
+    <a href="#servicii">Servicii</a>
+    <a href="#proces">Proces</a>
+    <a href="#de-ce">De ce AI</a>
+    <a href="testimoniale.html">Testimoniale</a>
+    <a href="portofoliu.html">Portofoliu</a>
+    <a href="form.html" class="nav-cta">Programează un apel</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<!-- HERO -->
-<section class="hero" style="padding-top:90px; padding-bottom:80px;">
-  <div class="hero-content">
-    <span class="hero-eyebrow">Firma specializata in administrare blocuri</span>
-    <h1>Expertii care au grija de blocul tau</h1>
-    <p>Bloc Expert pune la dispozitia asociatiilor de proprietari intreaga gama de servicii necesare pentru buna functionare a unui imobil — de la contabilitate si administrare financiara, pana la interventii tehnice si curatenie.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Solicita o oferta</a>
-      <a href="#servicii" class="btn-outline">Descopera serviciile</a>
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#despre" onclick="closeMenu()">Despre</a>
+  <a href="#servicii" onclick="closeMenu()">Servicii</a>
+  <a href="#proces" onclick="closeMenu()">Proces</a>
+  <a href="testimoniale.html">Testimoniale</a>
+  <a href="portofoliu.html">Portofoliu</a>
+  <a href="form.html" class="m-cta">Programează un apel</a>
+</div>
+
+<!-- Mobile Sticky CTA -->
+<div class="mobile-cta-sticky" id="mobile-cta">
+  <a href="form.html">
+    Programează un apel gratuit
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+</nav>
+
+<section id="hero">
+  <canvas id="galaxy-canvas"></canvas>
+  <div class="hero-inner">
+    <div class="badge"><span class="dot"></span>Automatizări AI pentru afaceri locale</div>
+    <h1>Îți cresc profitul.<br>Tu te ocupi de <em>restul.</em></h1>
+    <p class="sub">Implementez automatizări AI personalizate pentru fiecare afacere în parte — nu soluții generice, ci sisteme construite exact pe nevoile tale, care lucrează 24/7.</p>
+    <div class="btns">
+      <a href="form.html" class="btn-p">
+        Programează un apel gratuit
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="portofoliu.html" class="btn-s">Vezi portofoliu</a>
+      <a href="testimoniale.html" class="btn-s">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Testimoniale
+      </a>
+    </div>
+  </div>
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>Restaurante</span><span class="d">✦</span><span>Saloane de Evenimente</span><span class="d">✦</span><span>Beauty &amp; Saloane</span><span class="d">✦</span><span>Săli de Sport</span><span class="d">✦</span><span>Clinici &amp; Cabinete</span><span class="d">✦</span><span>Retail Local</span><span class="d">✦</span><span>Restaurante</span><span class="d">✦</span><span>Saloane de Evenimente</span><span class="d">✦</span><span>Beauty &amp; Saloane</span><span class="d">✦</span><span>Săli de Sport</span><span class="d">✦</span><span>Clinici &amp; Cabinete</span><span class="d">✦</span><span>Retail Local</span><span class="d">✦</span>
     </div>
   </div>
 </section>
 
-
-
-<!-- ZONE -->
-<section id="zone">
-  <div class="section-header">
-    <div class="section-label">Acoperire geografica</div>
-    <h2 class="section-title">Administrare blocuri</h2>
-    <p class="section-lead">Oferim servicii de administrare blocuri in sectoarele Bucuresti si in judetul Ilfov.</p>
-  </div>
-  <div class="zone-grid">
-    <a href="pachetstart.html" class="zone-card">
-      <img src="start.png" alt="Administrare bloc — Pachet Start" />
-      <div class="zone-card-overlay"></div>
-      <span class="zone-card-title">Administrare bloc — Pachet Start</span>
-      <div class="zone-card-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
-    </a>
-    <a href="sector1.html" class="zone-card">
-      <img src="sector1.png" alt="Administrare blocuri Sector 1" />
-      <div class="zone-card-overlay"></div>
-      <span class="zone-card-title">Vezi administrare blocuri Sector 1</span>
-      <div class="zone-card-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
-    </a>
-    <a href="sector2.html" class="zone-card">
-      <img src="sector2.png" alt="Administrare blocuri Sector 2" />
-      <div class="zone-card-overlay"></div>
-      <span class="zone-card-title">Vezi administrare blocuri Sector 2</span>
-      <div class="zone-card-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
-    </a>
-    <a href="sector3.html" class="zone-card">
-      <img src="sector3.png" alt="Administrare blocuri Sector 3" />
-      <div class="zone-card-overlay"></div>
-      <span class="zone-card-title">Vezi administrare blocuri Sector 3</span>
-      <div class="zone-card-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
-    </a>
-    <a href="sector4.html" class="zone-card">
-      <img src="sector4.png" alt="Administrare blocuri Sector 4" />
-      <div class="zone-card-overlay"></div>
-      <span class="zone-card-title">Vezi administrare blocuri Sector 4</span>
-      <div class="zone-card-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
-    </a>
-    <a href="sector5.html" class="zone-card">
-      <img src="sector5.png" alt="Administrare blocuri Sector 5" />
-      <div class="zone-card-overlay"></div>
-      <span class="zone-card-title">Vezi administrare blocuri Sector 5</span>
-      <div class="zone-card-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
-    </a>
-    <a href="sector6.html" class="zone-card">
-      <img src="sector6.png" alt="Administrare blocuri Sector 6" />
-      <div class="zone-card-overlay"></div>
-      <span class="zone-card-title">Vezi administrare blocuri Sector 6</span>
-      <div class="zone-card-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
-    </a>
-    <a href="ilfov.html" class="zone-card">
-      <img src="ilfov.png" alt="Administrare blocuri Ilfov" />
-      <div class="zone-card-overlay"></div>
-      <span class="zone-card-title">Vezi administrare blocuri Ilfov</span>
-      <div class="zone-card-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
-    </a>
-    <a href="popesti.html" class="zone-card">
-      <img src="popesti.png" alt="Administrare blocuri Popesti-Leordeni" />
-      <div class="zone-card-overlay"></div>
-      <span class="zone-card-title">Vezi administrare blocuri Popesti-Leordeni</span>
-      <div class="zone-card-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
-    </a>
-    <a href="voluntari.html" class="zone-card">
-      <img src="voluntari.png" alt="Administrare blocuri Voluntari" />
-      <div class="zone-card-overlay"></div>
-      <span class="zone-card-title">Vezi administrare blocuri Voluntari</span>
-      <div class="zone-card-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
-    </a>
-    <a href="ploiesti.html" class="zone-card">
-      <img src="ploiesti.png" alt="Administrare blocuri Ploiesti" />
-      <div class="zone-card-overlay"></div>
-      <span class="zone-card-title">Vezi administrare blocuri Ploiesti</span>
-      <div class="zone-card-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
-    </a>
-  </div>
-</section>
-
-<!-- IMOBILE -->
-<section id="imobile" style="background: var(--bg-light);">
-  <div class="section-header">
-    <div class="section-label">Imobile rezidentiale</div>
-    <h2 class="section-title">Administrare imobile</h2>
-    <p class="section-lead">Servicii profesionale de administrare imobile pentru proprietari si asociatii din Bucuresti si Ilfov.</p>
-  </div>
-  <div class="imobile-grid">
-    <a href="administrareinfo.html" class="imobil-card">
-      <div class="imobil-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+<!-- DESPRE MINE -->
+<section id="despre" class="divider">
+  <div class="inner">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img src="eu1.png" alt="Velichi Luca — Automatizări AI Galați" class="about-img">
+        <div class="about-img-border"></div>
       </div>
-      <div class="imobil-body">
-        <h3>Administrare imobile info</h3>
-        <p>Informatii complete despre serviciile de administrare pentru imobilele rezidentiale.</p>
-      </div>
-      <span class="imobil-arrow">&#8594;</span>
-    </a>
-    <a href="imobil1.html" class="imobil-card">
-      <div class="imobil-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <div class="imobil-body">
-        <h3>Administrare imobile Sector&nbsp;1</h3>
-        <p>Servicii de administrare pentru imobilele rezidentiale din Sectorul 1.</p>
-      </div>
-      <span class="imobil-arrow">&#8594;</span>
-    </a>
-    <a href="imobil2.html" class="imobil-card">
-      <div class="imobil-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <div class="imobil-body">
-        <h3>Administrare imobile Sector&nbsp;2</h3>
-        <p>Servicii de administrare pentru imobilele rezidentiale din Sectorul 2.</p>
-      </div>
-      <span class="imobil-arrow">&#8594;</span>
-    </a>
-    <a href="imobil3.html" class="imobil-card">
-      <div class="imobil-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <div class="imobil-body">
-        <h3>Administrare imobile Sector&nbsp;3</h3>
-        <p>Servicii de administrare pentru imobilele rezidentiale din Sectorul 3.</p>
-      </div>
-      <span class="imobil-arrow">&#8594;</span>
-    </a>
-    <a href="imobil4.html" class="imobil-card">
-      <div class="imobil-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <div class="imobil-body">
-        <h3>Administrare imobile Sector&nbsp;4</h3>
-        <p>Servicii de administrare pentru imobilele rezidentiale din Sectorul 4.</p>
-      </div>
-      <span class="imobil-arrow">&#8594;</span>
-    </a>
-    <a href="imobil5.html" class="imobil-card">
-      <div class="imobil-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <div class="imobil-body">
-        <h3>Administrare imobile Sector&nbsp;5</h3>
-        <p>Servicii de administrare pentru imobilele rezidentiale din Sectorul 5.</p>
-      </div>
-      <span class="imobil-arrow">&#8594;</span>
-    </a>
-    <a href="imobil6.html" class="imobil-card">
-      <div class="imobil-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <div class="imobil-body">
-        <h3>Administrare imobile Sector&nbsp;6</h3>
-        <p>Servicii de administrare pentru imobilele rezidentiale din Sectorul 6.</p>
-      </div>
-      <span class="imobil-arrow">&#8594;</span>
-    </a>
-    <a href="imobililfov.html" class="imobil-card">
-      <div class="imobil-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <div class="imobil-body">
-        <h3>Administrare imobile Ilfov</h3>
-        <p>Servicii de administrare pentru imobilele rezidentiale din judetul Ilfov.</p>
-      </div>
-      <span class="imobil-arrow">&#8594;</span>
-    </a>
-    <a href="imobilpopesti.html" class="imobil-card">
-      <div class="imobil-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <div class="imobil-body">
-        <h3>Administrare imobile Popesti-Leordeni</h3>
-        <p>Servicii de administrare pentru imobilele rezidentiale din Popesti-Leordeni.</p>
-      </div>
-      <span class="imobil-arrow">&#8594;</span>
-    </a>
-    <a href="imobilvoluntar.html" class="imobil-card">
-      <div class="imobil-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <div class="imobil-body">
-        <h3>Administrare imobile Voluntari</h3>
-        <p>Servicii de administrare pentru imobilele rezidentiale din Voluntari.</p>
-      </div>
-      <span class="imobil-arrow">&#8594;</span>
-    </a>
-    <a href="imobilploiesti.html" class="imobil-card">
-      <div class="imobil-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <div class="imobil-body">
-        <h3>Administrare imobile Ploiesti</h3>
-        <p>Servicii de administrare pentru imobilele rezidentiale din Ploiesti.</p>
-      </div>
-      <span class="imobil-arrow">&#8594;</span>
-    </a>
-  </div>
-</section>
-
-<!-- SERVICII GRID -->
-<section id="servicii">
-  <div class="section-header">
-    <div class="section-label">Ce oferim</div>
-    <h2 class="section-title">Servicii complete pentru asociatia ta</h2>
-    <p class="section-lead">Colaboram permanent cu autoritatile responsabile pentru a garanta standarde ridicate in fiecare domeniu de activitate.</p>
-  </div>
-  <div class="servicii-lista-grid">
-    <a href="administrare-financiara.html" class="serviciu-card">
-      <div class="serviciu-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-      </div>
-      <div class="serviciu-body">
-        <h3>Administrare financiara</h3>
-        <p>Intocmirea listelor de intretinere si evidenta contabila in partida simpla conform legislatiei in vigoare.</p>
-      </div>
-      <span class="serviciu-arrow">&#8594;</span>
-    </a>
-    <a href="administrare-fiscala.html" class="serviciu-card">
-      <div class="serviciu-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-      </div>
-      <div class="serviciu-body">
-        <h3>Administrare fiscala</h3>
-        <p>Respectarea stricta a tuturor obligatiilor fiscale ale asociatiei, cu actualizare imediata la modificari legislative.</p>
-      </div>
-      <span class="serviciu-arrow">&#8594;</span>
-    </a>
-    <a href="administrare-tehnica.html" class="serviciu-card">
-      <div class="serviciu-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
-      </div>
-      <div class="serviciu-body">
-        <h3>Administrare tehnica</h3>
-        <p>Supraveghere tehnica a imobilului si coordonarea lucrarilor de intretinere prin personal specializat.</p>
-      </div>
-      <span class="serviciu-arrow">&#8594;</span>
-    </a>
-    <a href="intretinere-reparatii.html" class="serviciu-card">
-      <div class="serviciu-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-      </div>
-      <div class="serviciu-body">
-        <h3>Intretinere si mici reparatii</h3>
-        <p>Interventii rapide pentru remedierea defectiunilor minore in spatiile comune ale imobilului.</p>
-      </div>
-      <span class="serviciu-arrow">&#8594;</span>
-    </a>
-    <a href="management-proiect.html" class="serviciu-card">
-      <div class="serviciu-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      </div>
-      <div class="serviciu-body">
-        <h3>Management de proiect</h3>
-        <p>Coordonarea si supervizarea lucrarilor de amploare in imobil, de la planificare pana la receptie.</p>
-      </div>
-      <span class="serviciu-arrow">&#8594;</span>
-    </a>
-    <a href="monitorizare-tehnica.html" class="serviciu-card">
-      <div class="serviciu-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-      </div>
-      <div class="serviciu-body">
-        <h3>Monitorizare tehnica</h3>
-        <p>Urmarirea permanenta a starii tehnice a instalatiilor si echipamentelor din imobil.</p>
-      </div>
-      <span class="serviciu-arrow">&#8594;</span>
-    </a>
-    <a href="curatenie-blocuri.html" class="serviciu-card">
-      <div class="serviciu-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-      </div>
-      <div class="serviciu-body">
-        <h3>Curatenie blocuri</h3>
-        <p>Servicii de curatenie pentru spatiile comune, asigurand un mediu ingrijit pentru toti locatarii.</p>
-      </div>
-      <span class="serviciu-arrow">&#8594;</span>
-    </a>
-    <a href="servicii-juridice.html" class="serviciu-card">
-      <div class="serviciu-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
-      </div>
-      <div class="serviciu-body">
-        <h3>Servicii juridice</h3>
-        <p>Asistenta juridica specializata pentru asociatiile de proprietari, asigurata de juristi cu experienta.</p>
-      </div>
-      <span class="serviciu-arrow">&#8594;</span>
-    </a>
-    <a href="soft-administrare-blocuri.html" class="serviciu-card">
-      <div class="serviciu-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-      </div>
-      <div class="serviciu-body">
-        <h3>Soft administrare blocuri</h3>
-        <p>Platforma proprie blocexpert.ro pentru contabilitate in partida simpla si rapoarte detaliate.</p>
-      </div>
-      <span class="serviciu-arrow">&#8594;</span>
-    </a>
-  </div>
-</section>
-
-
-
-<!-- DESPRE -->
-<section id="despre" style="padding: 72px 5%;">
-  <div class="despre-text">
-    <div class="section-label">Cine suntem</div>
-    <h2 class="section-title">O echipa specializata in administrarea imobilelor</h2>
-    <p class="section-lead">Bloc Expert este o firma specializata care pune la dispozitia asociatiilor de proprietari intreaga gama de servicii necesare pentru functionarea optima a unui imobil.</p>
-    <ul class="despre-list">
-      <li>Administrator de bloc cu certificat de calificare si atestat conform Legii 196/2018</li>
-      <li>Experti contabili autorizati cu experienta in contabilitatea asociatiilor</li>
-      <li>Economisti si juristi specializati in dreptul asociatiilor de proprietari</li>
-      <li>Personal tehnic specializat — instalatori si electricieni calificati</li>
-      <li>Legatura permanenta cu autoritatile responsabile de domeniu</li>
-    </ul>
-  </div>
-  <div class="despre-card">
-    <h3>Platforma proprie de administrare</h3>
-    <p>Bloc Expert utilizeaza pentru intocmirea contabilitatii in partida simpla platforma proprie blocexpert.ro, conceputa special pentru asociatiile de proprietari.</p>
-    <p>Platforma ofera o interfata simpla, intuitiva si o gama variata de rapoarte care pot fi generate in orice moment, asigurand transparenta totala a gestiunii financiare.</p>
-    <p>Asociatiile administrate de noi au acces online permanent la situatia financiara a imobilului.</p>
-  </div>
-</section>
-
-<!-- PLATI -->
-<section id="plati">
-  <div class="section-header">
-    <div class="section-label">Flexibilitate maxima</div>
-    <h2 class="section-title">Modalitati de achitare a cotelor de intretinere</h2>
-    <p class="section-lead">Locatarii pot achita cotele de intretinere prin mai multe metode, adaptate diferitelor preferinte si stiluri de viata.</p>
-  </div>
-  <div class="plati-grid">
-    <div class="plata-item">
-      <span class="plata-dot"></span>
-      <span>Achitare in numerar sau prin card la terminalul POS din casieria imobilului — 1-2 sesiuni lunare de aproximativ 60 de minute</span>
-    </div>
-    <div class="plata-item">
-      <span class="plata-dot"></span>
-      <span>Virament bancar in contul asociatiei de proprietari — accesibil in orice moment al zilei</span>
-    </div>
-    <div class="plata-item">
-      <span class="plata-dot"></span>
-      <span>Plata electronica prin platforma blocexpert.ro cu cardul — disponibila permanent, fara program</span>
-    </div>
-    <div class="plata-item">
-      <span class="plata-dot"></span>
-      <span>Prin aplicatii de plata instalate pe dispozitivul mobil, rapid si simplu</span>
-    </div>
-    <div class="plata-item">
-      <span class="plata-dot"></span>
-      <span>La aparatele automate SELFPAY din retelele MegaImage, Shop&amp;Go, Profi, Cora si Carrefour</span>
-    </div>
-    <div class="plata-item">
-      <span class="plata-dot"></span>
-      <span>In numerar la punctele partenere din reteaua PAYPOINT</span>
-    </div>
-  </div>
-</section>
-
-<!-- CONTRACT -->
-<section id="contract">
-  <div class="section-label" style="color: rgba(255,255,255,0.5); text-align:center;">Cadru legal</div>
-  <h2 class="section-title" style="text-align:center; margin-bottom:16px;">Contractul de administrare</h2>
-  <p class="section-lead" style="margin-bottom:14px;">Contractul de prestari servicii se incheie intre asociatia de proprietari si societatea noastra in baza hotararii adunarii generale.</p>
-  <p class="contract-extra">Contractul poate fi incheiat pe durata determinata, cu posibilitate de prelungire, sau pe durata nedeterminata cu conditii clare de incetare stabilite de asociatie. Toate serviciile prestate respecta in totalitate reglementarile din Legea 196/2018 si orice alte norme conexe in vigoare.</p>
-  <a href="#contact" class="btn-primary">Solicita un contract</a>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-header">
-    <div class="section-label">Ia legatura cu noi</div>
-    <h2 class="section-title">Solicita o oferta pentru blocul tau</h2>
-    <p class="section-lead">Completeaza formularul de mai jos si te contactam in cel mai scurt timp posibil.</p>
-  </div>
-  <div class="contact-wrap">
-    <div class="contact-info">
-      <h3>Date de contact</h3>
-      <p>Suntem disponibili pentru orice intrebare legata de serviciile noastre de administrare blocuri.</p>
-      <div class="contact-detail">
-        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        <span>info@blocexpertsrl.ro</span>
-      </div>
-      <div class="contact-detail" style="margin-top:24px;">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
-        <span>Legea 196/2018 — Administrator atestat</span>
-      </div>
-    </div>
-
-    <div class="contact-form">
-      <form action="mailto:info@blocexpertsrl.ro" method="post" enctype="text/plain">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Nume si prenume <span>*</span></label>
-            <input type="text" name="Nume" placeholder="ex. Ion Popescu" required />
-          </div>
-          <div class="form-group">
-            <label>Numar telefon contact <span>*</span></label>
-            <input type="tel" name="Telefon" placeholder="ex. 0700 000 000" required />
-          </div>
+      <div class="about-text">
+        <div class="lbl">Despre mine</div>
+        <h2>Salut, sunt Luca.</h2>
+        <p>Am <strong>20 de ani</strong>, sunt din <strong>Galați</strong> și ajut afacerile din toată România să crească cu ajutorul AI. Nu vând soluții copiate de pe internet — mă bag adânc în afacerea ta, înțeleg cum funcționează și construiesc exact ce are nevoie.</p>
+        <p>Am început să lucrez cu AI când am realizat că cele mai multe afaceri locale pierd clienți și timp din cauza unor procese repetitive pe care o mașinărie le-ar putea face în locul lor. Acum fac exact asta — eliberez oameni de muncă inutilă, ca să se concentreze pe ce contează cu adevărat.</p>
+        <p><strong>Un apel de 30 de minute</strong> e tot ce îmi trebuie ca să înțeleg afacerea ta și să îți spun concret ce pot face pentru ea.</p>
+        <div class="about-tags">
+          <span class="about-tag">Automatizări AI</span>
+          <span class="about-tag">Chatboți</span>
+          <span class="about-tag">Chatbot Vocal</span>
+          <span class="about-tag">Marketing Automatizat</span>
+          <span class="about-tag">House Tour-uri AI</span>
+          <span class="about-tag">Follow-up Automat</span>
+          <span class="about-tag">Rezervări Automate</span>
+          <span class="about-tag">Rapoarte AI</span>
+          <span class="about-tag">Galați &amp; România</span>
         </div>
-        <div class="form-group">
-          <label>Email <span>*</span></label>
-          <input type="email" name="Email" placeholder="adresa@email.ro" required />
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Adresa imobilului <span>*</span></label>
-            <input type="text" name="Adresa imobil" placeholder="Strada, Nr., Oras" required />
-          </div>
-          <div class="form-group">
-            <label>Numar apartamente <span>*</span></label>
-            <input type="number" name="Numar apartamente" placeholder="ex. 48" min="1" required />
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Subiect <span>*</span></label>
-          <input type="text" name="Subiect" placeholder="ex. Solicitare oferta administrare" required />
-        </div>
-        <div class="form-group">
-          <label>Mesaj <span>*</span></label>
-          <textarea name="Mesaj" placeholder="Descrie pe scurt situatia actuala si cerintele asociatiei..." required></textarea>
-        </div>
-        <div class="h-captcha" data-sitekey="5bfe9a14-c638-45e0-8860-7d44dd76994c" style="margin-bottom: 16px;"></div>
-        <button type="submit" class="form-submit">Trimite solicitarea</button>
-        <p class="form-notice">Vei primi un raspuns in cel mai scurt timp posibil.</p>
-      </form>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- SERVICII -->
+<section id="servicii" class="divider">
+  <div class="inner">
+    <div class="services-top">
+      <div class="services-text">
+        <div class="lbl">Ce fac</div>
+        <h2>Construiesc automatizări speciale pentru nevoile business-ului tău</h2>
+        <p>Nu vând pachete standard. Analizez afacerea ta, identific unde pierzi timp și bani, și construiesc sistemul potrivit — de la zero, personalizat 100% pentru tine.</p>
+      </div>
+      <div class="services-img-wrap">
+        <img src="eu2.png" alt="Velichi Luca" class="services-img">
+        <div class="services-img-border"></div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="card-num">01</div><h3>Chatbot &amp; Asistent AI</h3><p>Un asistent care răspunde clienților tăi instant, 24/7 — rezervări, întrebări, oferte — fără să angajezi pe nimeni.</p></div>
+      <div class="card"><div class="card-num">02</div><h3>Automatizări de Flux</h3><p>Sarcini repetitive care îți mănâncă ore întregi — rapoarte, follow-up-uri, notificări — automatizate complet.</p></div>
+      <div class="card"><div class="card-num">03</div><h3>Prezență Online &amp; Site Web</h3><p>Un site profesional care convertește vizitatorii în clienți, optimizat pentru Google și construit să vândă.</p></div>
+      <div class="card"><div class="card-num">04</div><h3>Marketing Automatizat</h3><p>Conținut pentru social media, campanii de email și outreach generat și programat automat cu AI.</p></div>
+      <div class="card"><div class="card-num">05</div><h3>Preluare Apeluri AI</h3><p>Un agent vocal AI care preia apelurile în afara programului, înregistrează cereri și trimite notificări instant.</p></div>
+      <div class="card"><div class="card-num">06</div><h3>Proiecte Personalizate</h3><p>Ai o problemă specifică în afacerea ta? Discutăm și construim exact soluția de care ai nevoie.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="proces" class="divider">
+  <div class="inner">
+    <div class="lbl">Cum lucrez</div>
+    <h2>Simplu. Rapid. Eficient.</h2>
+    <p class="desc">De la prima discuție la un sistem funcțional, fără complicații tehnice din partea ta.</p>
+    <div class="steps">
+      <div class="step"><div class="sn">01</div><div><h3>Analizăm afacerea ta</h3><p>Discutăm 30 de minute despre cum funcționează afacerea ta acum, unde pierzi timp, ce repetă angajații tăi zilnic și unde există potențial neexploatat.</p></div></div>
+      <div class="step"><div class="sn">02</div><div><h3>Construiesc soluția potrivită</h3><p>Nu un template generic — un sistem construit specific pentru tine. Aleg toolurile potrivite și configurez totul de la zero pe baza nevoilor tale reale.</p></div></div>
+      <div class="step"><div class="sn">03</div><div><h3>Integrare fără bătăi de cap</h3><p>Implementez totul în infrastructura existentă. Nu trebuie să schimbi nimic radical — adaugăm AI peste ce funcționează deja.</p></div></div>
+      <div class="step"><div class="sn">04</div><div><h3>Rezultate măsurabile</h3><p>Urmărim împreună impactul: mai puțin timp pierdut, mai mulți clienți preluați, costuri reduse. Dacă nu funcționează, ajustăm până funcționează.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="de-ce" class="divider">
+  <div class="inner">
+    <div class="lbl">De ce contează</div>
+    <h2>Concurenții tăi deja<br>folosesc AI. Tu?</h2>
+    <p class="desc">Nu e o tendință — e o schimbare permanentă. Afacerile care adoptă acum câștigă avantajul care durează.</p>
+    <div class="wgrid">
+      <div class="wcard"><div class="num">24/7</div><h4>Disponibilitate Totală</h4><p>Sistemele AI nu dorm, nu se îmbolnăvesc, nu iau pauze. Clienții tăi primesc răspuns oricând.</p></div>
+      <div class="wcard"><div class="num">100%</div><h4>Personalizat Pentru Tine</h4><p>Nu cumperi un produs de pe raft. Construim împreună exact ce are nevoie afacerea ta.</p></div>
+      <div class="wcard"><div class="num">0</div><h4>Apeluri Ratate</h4><p>Fiecare cerere capturată, fiecare client potențial urmărit automat până la conversie.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="rezultate" class="divider">
+  <div class="inner">
+    <div class="lbl">Rezultate</div>
+    <h2>Ce spun clienții</h2>
+    <p class="desc">Afaceri locale din Galați care au implementat automatizări AI și au văzut diferența.</p>
+    <div class="tgrid">
+      <div class="tcard"><div class="big">7+</div><p>Clienți mulțumiți care și-au transformat afacerea cu ajutorul automatizărilor AI</p></div>
+      <div class="tcard"><div class="big">24/7</div><p>Sistemele lor funcționează non-stop, fără intervenție umană</p></div>
+      <div class="tcard"><div class="big">↑</div><p>Timp recuperat, venituri crescute, clienți mai mulți și mai fericiți</p></div>
+    </div>
+    <a href="testimoniale.html" class="btn-insta">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      Vezi toate testimonialele
+    </a>
+  </div>
+</section>
+
+<section id="contact" class="divider">
+  <div class="inner">
+    <div class="lbl">Hai să vorbim</div>
+    <h2>Un apel de 30 de minute<br>poate schimba tot.</h2>
+    <div class="contact-box">
+      <div class="cleft">
+        <p>Fără obligații. Discutăm despre afacerea ta, îți spun ce pot face și decizi tu dacă merită. Cel mai rău caz: ai 30 de minute mai înțelept.</p>
+        <div class="clinks">
+          <a href="https://instagram.com/velichi.luca" class="clink" target="_blank">
+            <span style="font-size:1.3rem">📸</span>
+            <div>Instagram<span class="clink-sub">@velichi.luca</span></div>
+          </a>
+        </div>
+      </div>
+      <div class="cright">
+        <div class="cright-card">
+          <h3>Programează un apel gratuit</h3>
+          <p>Completează un scurt formular și alege data și ora care îți convine. Durează 2 minute.</p>
+          <a href="form.html" class="btn-apel">
+            Programează apelul
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <a href="https://wa.me/40770680071?text=Salut%20Luca%2C%20vreau%20sa%20discutam%20despre%20automatizari%20AI%20pentru%20afacerea%20mea" target="_blank" class="btn-wa">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Scrie-mi pe WhatsApp acum
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION — vizibil și indexat de Google -->
+<section id="faq" class="divider">
+  <div class="inner">
+    <div class="lbl">Întrebări frecvente</div>
+    <h2>Ai întrebări?<br>Am răspunsuri.</h2>
+    <p class="desc">Cele mai comune întrebări despre automatizări AI și serviciile mele.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Cum îmi scalez afacerea cu AI?
+          <span class="faq-arrow">↓</span>
+        </div>
+        <div class="faq-a">Prin implementarea de automatizări AI personalizate — chatboți, fluxuri automate, marketing automatizat — care preiau sarcinile repetitive și îți eliberează timp pentru creștere. Îți analizez afacerea și îți construiesc un sistem exact pe nevoile ei.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Am nevoie de cunoștințe tehnice?
+          <span class="faq-arrow">↓</span>
+        </div>
+        <div class="faq-a">Nu. Mă ocup de tot — de la analiză la implementare și integrare. Tu nu trebuie să schimbi nimic radical în afacerea ta, adăugăm AI peste ce funcționează deja.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Cât durează implementarea?
+          <span class="faq-arrow">↓</span>
+        </div>
+        <div class="faq-a">De la câteva zile pentru un chatbot simplu, la 2-3 săptămâni pentru sisteme complete de automatizare. Totul depinde de complexitatea afacerii tale.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Cât costă un chatbot sau o automatizare?
+          <span class="faq-arrow">↓</span>
+        </div>
+        <div class="faq-a">Prețul variază în funcție de complexitate și nevoile afacerii tale. Programează un apel gratuit de 30 minute și primești o ofertă personalizată fără obligații.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Lucrezi doar cu afaceri din Galați?
+          <span class="faq-arrow">↓</span>
+        </div>
+        <div class="faq-a">Nu — lucrez cu afaceri din toată România. Consultanța și implementarea se fac online, prin apeluri video și acces remote. Localizarea fizică nu contează.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Ce tipuri de afaceri pot beneficia de automatizări AI?
+          <span class="faq-arrow">↓</span>
+        </div>
+        <div class="faq-a">Orice afacere cu procese repetitive: restaurante, saloane, săli de sport, clinici, cabinete, agenții imobiliare, magazine, firme de construcții, avocați, contabili și multe altele.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <img src="logo.png" alt="Bloc Expert" />
-      <p>Firma specializata in administrarea blocurilor si imobilelor rezidentiale din Bucuresti si Ilfov.</p>
-      <a href="mailto:info@blocexpertsrl.ro" class="footer-mail">info@blocexpertsrl.ro</a>
-    </div>
-    <div class="footer-col">
-      <h4>Adm. blocuri</h4>
-      <ul>
-        <li><a href="pachetstart.html">Pachet Start</a></li>
-        <li><a href="sector1.html">Sector 1</a></li>
-        <li><a href="sector2.html">Sector 2</a></li>
-        <li><a href="sector3.html">Sector 3</a></li>
-        <li><a href="sector4.html">Sector 4</a></li>
-        <li><a href="sector5.html">Sector 5</a></li>
-        <li><a href="sector6.html">Sector 6</a></li>
-        <li><a href="ilfov.html">Ilfov</a></li>
-        <li><a href="popesti.html">Popesti-Leordeni</a></li>
-        <li><a href="voluntari.html">Voluntari</a></li>
-        <li><a href="ploiesti.html">Ploiesti</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Adm. imobile</h4>
-      <ul>
-        <li><a href="administrareinfo.html">Info administrare</a></li>
-        <li><a href="imobil1.html">Sector 1</a></li>
-        <li><a href="imobil2.html">Sector 2</a></li>
-        <li><a href="imobil3.html">Sector 3</a></li>
-        <li><a href="imobil4.html">Sector 4</a></li>
-        <li><a href="imobil5.html">Sector 5</a></li>
-        <li><a href="imobil6.html">Sector 6</a></li>
-        <li><a href="imobililfov.html">Ilfov</a></li>
-        <li><a href="imobilpopesti.html">Popesti-Leordeni</a></li>
-        <li><a href="imobilvoluntar.html">Voluntari</a></li>
-        <li><a href="imobilploiesti.html">Ploiesti</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Servicii</h4>
-      <ul>
-        <li><a href="administrare-financiara.html">Adm. financiara</a></li>
-        <li><a href="administrare-fiscala.html">Adm. fiscala</a></li>
-        <li><a href="administrare-tehnica.html">Adm. tehnica</a></li>
-        <li><a href="intretinere-reparatii.html">Intretinere</a></li>
-        <li><a href="management-proiect.html">Management proiect</a></li>
-        <li><a href="monitorizare-tehnica.html">Monitorizare</a></li>
-        <li><a href="curatenie-blocuri.html">Curatenie</a></li>
-        <li><a href="servicii-juridice.html">Servicii juridice</a></li>
-        <li><a href="soft-administrare-blocuri.html">Soft administrare</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Pagini</h4>
-      <ul>
-        <li><a href="administrator.html">Administrator bloc</a></li>
-    <li><a href="blog.html">Blog</a></li>
-        <li><a href="legislatie.html">Legislatie</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <ul>
-        <li><a href="politica.html">Politica de confidentialitate</a></li>
-        <li><a href="termeni.html">Termeni si conditii</a></li>
-        <li><a href="cookies.html">Politica cookies</a></li>
-      </ul>
-      <div class="footer-legal-badges">
-        <a href="https://anpc.ro/ce-este-anpc/" target="_blank" rel="nofollow noopener">
-          <img src="anpc.png" alt="ANPC" class="footer-legal-badge" />
-        </a>
-        <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="nofollow noopener">
-          <img src="sol.png" alt="SOL" class="footer-legal-badge" />
-        </a>
-      </div>
+  <div style="display:flex;flex-direction:column;gap:4px">
+    <p>© 2026 VL Agency SRL · CUI: 54870636 · J2026037848004</p>
+    <p style="font-size:.78rem;color:#64748b">Municipiul Galați, Str. 1 Decembrie 1918, Nr. 1, Bl. S5B, Sc. 3, Parter, Ap. 52</p>
+    <div style="display:flex;gap:12px;align-items:center;margin-top:8px">
+      <a href="https://anpc.ro" target="_blank" rel="nofollow">
+        <img src="anpc.png" alt="ANPC" style="height:40px;opacity:.8;transition:opacity .2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.8'">
+      </a>
+      <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="nofollow">
+        <img src="sol.png" alt="SOL" style="height:40px;opacity:.8;transition:opacity .2s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.8'">
+      </a>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2026 Bloc Expert — Firma de administrare blocuri</span>
-<span>Realizat de <a href="https://velichi-luca.agency" target="_blank">velichi-luca.agency</a></span>
+  <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+    <a href="confidentialitate.html" style="color:#94a3b8;font-size:.82rem;text-decoration:none" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94a3b8'">Politică de Confidențialitate</a>
+    <a href="termeni.html" style="color:#94a3b8;font-size:.82rem;text-decoration:none" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94a3b8'">Termeni și Condiții</a>
+    <a href="cookies.html" style="color:#94a3b8;font-size:.82rem;text-decoration:none" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94a3b8'">Politică Cookies</a>
+    <a href="https://instagram.com/velichi.luca" target="_blank" style="display:inline-flex;align-items:center;gap:8px;color:#94a3b8;text-decoration:none;font-size:.82rem;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94a3b8'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      Designed by Luca
+    </a>
   </div>
 </footer>
+</div>
 
 <script>
-  const toggles = document.querySelectorAll('.dropdown-toggle');
+(function(){
+  var c=document.getElementById('galaxy-canvas'),ctx=c.getContext('2d'),W,H,cx,cy;
+  function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;cx=W/2;cy=H/2;}
+  var pts=[];
+  function init(){
+    pts=[];var R=Math.min(W,H)*0.36,NARMS=3,N=480;
+    for(var a=0;a<NARMS;a++)for(var i=0;i<N;i++){
+      var t=i/N,dist=R*(0.08+t*0.92),base=(a/NARMS)*Math.PI*2;
+      var angle=base+dist*0.013+(Math.random()-.5)*0.22*(1-t*.6);
+      var pals=[[180+Math.floor(Math.random()*75),200+Math.floor(Math.random()*55),255],[255,210+Math.floor(Math.random()*45),120+Math.floor(Math.random()*80)],[210+Math.floor(Math.random()*45),180+Math.floor(Math.random()*55),255],[240,248,255]];
+      var pal=pals[Math.floor(Math.random()*pals.length)];
+      pts.push({angle:angle,dist:dist,speed:0.00014+0.00006*(1-t),size:0.3+Math.random()*(t<.25?1.6:0.9),alpha:(0.1+Math.random()*0.7)*(t<.12?1.8:1),r:pal[0],g:pal[1],b:pal[2],tp:Math.random()*Math.PI*2,ts:0.4+Math.random()*1.2});
+    }
+  }
+  var t=0;
+  function draw(){
+    t+=0.012;ctx.clearRect(0,0,W,H);
+    var g=ctx.createRadialGradient(cx,cy,0,cx,cy,Math.min(W,H)*.18);
+    g.addColorStop(0,'rgba(255,245,210,.28)');g.addColorStop(.4,'rgba(150,180,255,.1)');g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.beginPath();ctx.arc(cx,cy,Math.min(W,H)*.18,0,6.2832);ctx.fillStyle=g;ctx.fill();
+    for(var i=0;i<pts.length;i++){
+      var p=pts[i];p.angle+=p.speed;
+      var twk=Math.sin(t*p.ts+p.tp)*0.28,alpha=Math.min(1,Math.max(0.02,p.alpha+twk));
+      ctx.beginPath();ctx.arc(cx+Math.cos(p.angle)*p.dist,cy+Math.sin(p.angle)*p.dist*0.36,p.size,0,6.2832);
+      ctx.fillStyle='rgba('+p.r+','+p.g+','+p.b+','+alpha+')';ctx.fill();
+    }
+    var pulse=0.9+Math.sin(t*2.5)*0.1;
+    var qg=ctx.createRadialGradient(cx,cy,0,cx,cy,Math.min(W,H)*0.055*pulse);
+    qg.addColorStop(0,'rgba(255,255,255,.95)');qg.addColorStop(.25,'rgba(220,240,255,.6)');qg.addColorStop(.6,'rgba(80,140,255,.2)');qg.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.beginPath();ctx.arc(cx,cy,Math.min(W,H)*0.055*pulse,0,6.2832);ctx.fillStyle=qg;ctx.fill();
+    requestAnimationFrame(draw);
+  }
+  resize();init();draw();
+  window.addEventListener('resize',function(){resize();init();});
+})();
 
-  toggles.forEach(function(toggle) {
-    const li = toggle.closest('li');
-    toggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      const isOpen = li.classList.contains('open');
-      // Inchide toate
-      document.querySelectorAll('.nav-links li').forEach(function(el) {
-        el.classList.remove('open');
-      });
-      if (!isOpen) li.classList.add('open');
-    });
-  });
+// Cookie banner
+(function() {
+  if (!localStorage.getItem('cookie_consent')) {
+    document.getElementById('cookie-banner').style.display = 'flex';
+  }
+})();
+function acceptCookies() {
+  localStorage.setItem('cookie_consent', 'accepted');
+  document.getElementById('cookie-banner').style.display = 'none';
+}
+function refuzCookies() {
+  localStorage.setItem('cookie_consent', 'refused');
+  document.getElementById('cookie-banner').style.display = 'none';
+}
 
-  document.addEventListener('click', function() {
-    document.querySelectorAll('.nav-links li').forEach(function(el) {
-      el.classList.remove('open');
-    });
+function toggleMenu() {
+  var h = document.getElementById('hamburger');
+  var m = document.getElementById('mobile-menu');
+  h.classList.toggle('open');
+  m.classList.toggle('open');
+  document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function toggleFaq(el) {
+  var answer = el.nextElementSibling;
+  var isOpen = el.classList.contains('open');
+  document.querySelectorAll('.faq-q').forEach(function(q) { q.classList.remove('open'); });
+  document.querySelectorAll('.faq-a').forEach(function(a) { a.classList.remove('open'); });
+  if (!isOpen) { el.classList.add('open'); answer.classList.add('open'); }
+}
+
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      setTimeout(function(){e.target.classList.add('on');},parseInt(e.target.dataset.d||0)*90);
+      obs.unobserve(e.target);
+    }
   });
+},{threshold:0.1});
+document.querySelectorAll('.card,.step,.wcard,.tcard').forEach(function(el,i){el.dataset.d=i%4;obs.observe(el);});
 </script>
 </body>
 </html>
