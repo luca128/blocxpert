@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrare blocuri Sector 3 Bucuresti | Bloc Expert</title>
+  <meta name="description" content="Bloc Expert ofera servicii profesionale de administrare blocuri in Sectorul 3 Bucuresti. Administrator atestat, contabilitate, servicii tehnice si juridice pentru asociatii de proprietari." />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #2E3B7B;
+      --navy-dark: #1E2A5E;
+      --navy-light: #4A5A9B;
+      --accent: #C8A84B;
+      --bg-light: #F5F6F8;
+      --bg-white: #FFFFFF;
+      --text-dark: #1A1A2E;
+      --text-mid: #3D4460;
+      --text-muted: #6B7280;
+      --border: #E2E5EF;
+      --radius: 6px;
+      --shadow: 0 2px 12px rgba(46,59,123,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: var(--bg-white);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-mid);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--navy); }
+
+
+
+    /* DROPDOWN */
+    .nav-links li { position: relative; }
+
+    .dropdown-toggle {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      user-select: none;
+    }
+
+    .dropdown-toggle::after {
+      content: '';
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+      margin-top: -3px;
+      transition: transform 0.2s;
+    }
+
+    .nav-links li.open .dropdown-toggle::after {
+      transform: rotate(-135deg);
+      margin-top: 3px;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      min-width: 220px;
+      z-index: 200;
+      padding: 6px 0;
+    }
+
+    .nav-links li.open .dropdown-menu { display: block; }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 18px;
+      font-size: 14px;
+      color: var(--text-mid) !important;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--bg-light);
+      color: var(--navy) !important;
+    }
+
+    /* SERVICII LISTA GRID */
+    .servicii-lista-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .serviciu-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+    }
+
+    .serviciu-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+      border-color: var(--navy-light);
+    }
+
+    .serviciu-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--bg-light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--navy);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .serviciu-card:hover .serviciu-icon { background: var(--navy); color: #fff; }
+    .serviciu-icon svg { width: 20px; height: 20px; }
+
+    .serviciu-body { flex: 1; }
+
+    .serviciu-body h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .serviciu-body p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .serviciu-arrow {
+      font-size: 18px;
+      color: var(--navy-light);
+      flex-shrink: 0;
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .serviciu-card:hover .serviciu-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ZONE SECTION */
+    #zone { background: var(--bg-white); }
+
+    /* IMOBILE SECTION */
+    .imobile-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .imobil-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 20px 20px 20px;
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+    }
+
+    .imobil-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+      border-color: var(--navy-light);
+    }
+
+    .imobil-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--bg-light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--navy);
+      transition: background 0.2s;
+    }
+
+    .imobil-card:hover .imobil-icon { background: var(--navy); color: #fff; }
+
+    .imobil-icon svg { width: 20px; height: 20px; }
+
+    .imobil-body { flex: 1; }
+
+    .imobil-body h3 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .imobil-body p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .imobil-arrow {
+      font-size: 18px;
+      color: var(--navy-light);
+      flex-shrink: 0;
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .imobil-card:hover .imobil-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .zone-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .zone-card {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
+
+    .zone-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .zone-card:hover img { transform: scale(1.05); }
+
+    .zone-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15,24,60,0.82) 0%, rgba(15,24,60,0.15) 55%, transparent 100%);
+      transition: background 0.3s;
+    }
+
+    .zone-card:hover .zone-card-overlay {
+      background: linear-gradient(to top, rgba(15,24,60,0.90) 0%, rgba(15,24,60,0.30) 60%, transparent 100%);
+    }
+
+    .zone-card-title {
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+      right: 50px;
+      color: #fff;
+      font-family: 'Lora', serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      line-height: 1.3;
+    }
+
+    .zone-card-arrow {
+      position: absolute;
+      bottom: 20px;
+      right: 18px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity 0.25s, transform 0.25s;
+    }
+
+    .zone-card:hover .zone-card-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .zone-card-arrow svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--navy-dark);
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111827;
+      color: rgba(255,255,255,0.55);
+      font-size: 13px;
+    }
+
+    .footer-top {
+      padding: 56px 5% 44px;
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-brand img {
+      height: 60px;
+      width: auto;
+      margin-bottom: 14px;
+      display: block;
+      mix-blend-mode: lighten;
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.35);
+      max-width: 210px;
+      margin-bottom: 14px;
+    }
+
+    .footer-brand .footer-mail {
+      display: inline-block;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .footer-brand .footer-mail:hover { color: #fff; }
+
+    .footer-col h4 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul a {
+      color: rgba(255,255,255,0.52);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover { color: #fff; }
+
+    .footer-bottom {
+      padding: 18px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.22);
+    }
+
+    .footer-bottom a {
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-bottom a:hover { color: #fff; }
+
+    .footer-legal-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .footer-legal-badge {
+      height: 32px;
+      width: auto;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      display: block;
+    }
+
+    .footer-legal-badge:hover { opacity: 1; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      background-image: url('hero.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      color: #fff;
+      padding: 110px 5% 100px;
+      display: flex;
+      align-items: center;
+      min-height: 580px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(15,24,60,0.85) 0%, rgba(30,42,94,0.70) 55%, rgba(46,59,123,0.30) 100%);
+      z-index: 0;
+    }
+
+    .hero > * { position: relative; z-index: 1; }
+
+    .hero-content { flex: 1; max-width: 620px; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 22px;
+      color: #fff;
+    }
+
+    .hero p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--navy-dark);
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid rgba(255,255,255,0.45);
+      color: #fff;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+
+
+
+    /* SECTIONS */
+    section { padding: 72px 5%; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--navy-light);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .section-lead {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    .section-header { margin-bottom: 48px; }
+
+    /* SERVICII */
+    #servicii { background: var(--bg-light); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .service-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--navy);
+      border-radius: 8px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .service-card h3 {
+      font-family: 'Lora', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* DESPRE */
+    #despre {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .despre-text .section-lead { max-width: 100%; margin-bottom: 24px; }
+
+    .despre-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .despre-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    .despre-list li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .despre-card {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 10px;
+      padding: 44px 40px;
+    }
+
+    .despre-card h3 {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .despre-card p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 16px;
+    }
+
+    .despre-card p:last-child { margin-bottom: 0; }
+
+    /* PLATI */
+    #plati { background: var(--bg-light); }
+
+    .plati-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .plata-item {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .plata-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--navy);
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    /* CONTRACT */
+    #contract {
+      background: var(--navy-dark);
+      color: #fff;
+      text-align: center;
+    }
+
+    #contract .section-title { color: #fff; }
+
+    #contract .section-lead {
+      color: rgba(255,255,255,0.72);
+      margin: 0 auto 14px;
+      max-width: 640px;
+    }
+
+    #contract p.contract-extra {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      max-width: 580px;
+      margin: 0 auto 36px;
+      line-height: 1.75;
+    }
+
+    /* CONTACT */
+    #contact { background: var(--bg-light); }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+
+    .contact-info p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--text-mid);
+      margin-bottom: 12px;
+    }
+
+    .contact-detail svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--navy);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* FORM */
+    .contact-form {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 36px 32px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-mid);
+      margin-bottom: 6px;
+      letter-spacing: 0.01em;
+    }
+
+    .form-group label span { color: #c0392b; }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text-dark);
+      background: var(--bg-white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--navy-light);
+      box-shadow: 0 0 0 3px rgba(74,90,155,0.12);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 13px;
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 4px;
+    }
+
+    .form-submit:hover { background: var(--navy-dark); }
+
+    .form-notice {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    /* FOOTER */
+
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero { padding: 70px 5%; min-height: 460px; }
+      #despre { grid-template-columns: 1fr; gap: 40px; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .zone-grid { grid-template-columns: repeat(2, 1fr); }
+      .zone-card[style*="span 2"] { grid-column: span 2; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: span 2; }
+      .servicii-lista-grid { grid-template-columns: 1fr 1fr; }
+      .imobile-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .stats-bar { gap: 32px; }
+      section { padding: 52px 5%; }
+      .zone-grid { grid-template-columns: 1fr; }
+      .zone-card[style*="span 2"] { grid-column: span 1; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr 1fr; }
+      .servicii-lista-grid { grid-template-columns: 1fr; }
+      .imobile-grid { grid-template-columns: 1fr; }
+    }
+  
+
+    /* ===== PACHET START PAGE ===== */
+    .ps-hero {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 65%, var(--navy-light) 100%);
+      padding: 72px 5% 64px;
+      color: #fff;
+    }
+
+    .ps-hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .ps-breadcrumb {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+    }
+
+    .ps-breadcrumb a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+    }
+
+    .ps-breadcrumb a:hover { color: #fff; }
+    .ps-breadcrumb span { margin: 0 6px; }
+
+    .ps-hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 700;
+      line-height: 1.12;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .ps-hero p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .ps-hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .ps-btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--navy-dark);
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .ps-btn-primary:hover { opacity: 0.88; }
+
+    .ps-pret-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 28px 32px;
+      text-align: center;
+      min-width: 200px;
+    }
+
+    .ps-pret-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .ps-pret-val {
+      font-family: 'Lora', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .ps-pret-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 6px;
+    }
+
+    /* MAIN CONTENT */
+    .ps-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 5%;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .ps-main { min-width: 0; }
+
+    /* SECTIUNI */
+    .ps-section {
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ps-section:last-child {
+      border-bottom: none;
+    }
+
+    .ps-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--navy-light);
+      margin-bottom: 8px;
+    }
+
+    .ps-section h2 {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+    }
+
+    /* LISTA PRINCIPALA */
+    .ps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .ps-list-item {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ps-list-item:last-child { border-bottom: none; }
+
+    .ps-list-main {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.65;
+      font-weight: 500;
+    }
+
+    .ps-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--navy);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .ps-sublist {
+      list-style: none;
+      margin-top: 12px;
+      margin-left: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 24px;
+    }
+
+    .ps-sublist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .ps-subdot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    /* SIDEBAR */
+    .ps-sidebar {
+      position: sticky;
+      top: 90px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .ps-card {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .ps-card-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .ps-card-pret {
+      font-family: 'Lora', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .ps-card-pret-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .ps-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .ps-card-btn {
+      display: block;
+      width: 100%;
+      background: var(--navy);
+      color: #fff;
+      padding: 12px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .ps-card-btn:hover { background: var(--navy-dark); }
+
+    .ps-card-nav {
+      background: var(--bg-white);
+    }
+
+    .ps-card-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .ps-card-nav ul li a {
+      display: block;
+      padding: 9px 0;
+      font-size: 13px;
+      color: var(--text-mid);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s, padding-left 0.2s;
+    }
+
+    .ps-card-nav ul li:last-child a { border-bottom: none; }
+    .ps-card-nav ul li a:hover { color: var(--navy); padding-left: 4px; }
+    .ps-card-nav ul li a.active { color: var(--navy); font-weight: 600; }
+
+    /* TARIFE BOX */
+    .ps-tarife {
+      background: var(--navy);
+      border-radius: 8px;
+      padding: 32px;
+      margin-bottom: 48px;
+      color: #fff;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .ps-tarife-text h3 {
+      font-family: 'Lora', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .ps-tarife-text p {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+    }
+
+    .ps-tarife-nums {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ps-tarife-num {
+      text-align: center;
+      background: rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 16px;
+    }
+
+    .ps-tarife-num .val {
+      font-family: 'Lora', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+
+    .ps-tarife-num .lbl {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+
+    /* CTA FINAL */
+    .ps-cta-final {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+      border-radius: 10px;
+      padding: 52px 40px;
+      text-align: center;
+      margin: 0 5% 64px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .ps-cta-final h2 {
+      font-family: 'Lora', serif;
+      font-size: 28px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .ps-cta-final p {
+      color: rgba(255,255,255,0.7);
+      font-size: 16px;
+      margin-bottom: 28px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .ps-cta-final .ps-btn-primary {
+      font-size: 16px;
+      padding: 15px 36px;
+    }
+
+    /* MOBILE NAV */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-mid);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .nav-mobile-open .mobile-menu-btn span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-mobile-open .mobile-menu-btn span:nth-child(2) { opacity: 0; }
+    .nav-mobile-open .mobile-menu-btn span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .ps-hero-inner { grid-template-columns: 1fr; }
+      .ps-pret-card { display: none; }
+      .ps-body { grid-template-columns: 1fr; }
+      .ps-sidebar { position: static; }
+      .ps-sublist { grid-template-columns: 1fr; }
+      .ps-tarife { grid-template-columns: 1fr; }
+      .ps-cta-final { padding: 40px 24px; }
+    }
+
+    @media (max-width: 640px) {
+      .mobile-menu-btn { display: flex; }
+      .dropdown-toggle::after { display: none; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--bg-white);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        padding: 12px 5%;
+        gap: 0;
+        z-index: 99;
+      }
+      .nav-links.mobile-open { display: flex; }
+      .nav-links li { border-bottom: 1px solid var(--border); }
+      .nav-links li:last-child { border-bottom: none; }
+      .nav-links a, .nav-links .dropdown-toggle {
+        display: block;
+        padding: 12px 0;
+        font-size: 15px;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        padding: 0 0 8px 16px;
+      }
+      .ps-hero { padding: 48px 5% 40px; }
+      .ps-hero h1 { font-size: 28px; }
+      .ps-body { padding: 40px 5%; }
+      .ps-sublist { gap: 6px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 400px) {
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="logo.png" alt="Bloc Expert" />
+  </a>
+  <button class="mobile-menu-btn" aria-label="Meniu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li class="has-dropdown">
+      <span class="dropdown-toggle">Administrare blocuri</span>
+      <div class="dropdown-menu">
+        <a href="pachetstart.html">Administrare bloc — Pachet Start</a>
+        <a href="sector1.html">Administrare blocuri Sector 1</a>
+        <a href="sector2.html">Administrare blocuri Sector 2</a>
+        <a href="sector3.html">Administrare blocuri Sector 3</a>
+        <a href="sector4.html">Administrare blocuri Sector 4</a>
+        <a href="sector5.html">Administrare blocuri Sector 5</a>
+        <a href="sector6.html">Administrare blocuri Sector 6</a>
+        <a href="ilfov.html">Administrare blocuri Ilfov</a>
+        <a href="popesti.html">Administrare blocuri Popesti-Leordeni</a>
+        <a href="voluntari.html">Administrare blocuri Voluntari</a>
+        <a href="ploiesti.html">Administrare blocuri Ploiesti</a>
+      </div>
+    </li>
+    <li class="has-dropdown">
+      <span class="dropdown-toggle">Administrare imobile</span>
+      <div class="dropdown-menu">
+        <a href="administrareinfo.html">Administrare imobile info</a>
+        <a href="imobil1.html">Administrare imobile Sector 1</a>
+        <a href="imobil2.html">Administrare imobile Sector 2</a>
+        <a href="imobil3.html">Administrare imobile Sector 3</a>
+        <a href="imobil4.html">Administrare imobile Sector 4</a>
+        <a href="imobil5.html">Administrare imobile Sector 5</a>
+        <a href="imobil6.html">Administrare imobile Sector 6</a>
+        <a href="imobililfov.html">Administrare imobile Ilfov</a>
+        <a href="imobilpopesti.html">Administrare imobile Popesti-Leordeni</a>
+        <a href="imobilvoluntar.html">Administrare imobile Voluntari</a>
+        <a href="imobilploiesti.html">Administrare imobile Ploiesti</a>
+      </div>
+    </li>
+    <li class="has-dropdown">
+      <span class="dropdown-toggle">Servicii</span>
+      <div class="dropdown-menu">
+        <a href="administrare-financiara.html">Administrare financiara</a>
+        <a href="administrare-fiscala.html">Administrare fiscala</a>
+        <a href="administrare-tehnica.html">Administrare tehnica</a>
+        <a href="intretinere-reparatii.html">Intretinere si mici reparatii</a>
+        <a href="management-proiect.html">Management de proiect</a>
+        <a href="monitorizare-tehnica.html">Monitorizare tehnica</a>
+        <a href="curatenie-blocuri.html">Curatenie blocuri</a>
+        <a href="servicii-juridice.html">Servicii juridice</a>
+        <a href="soft-administrare-blocuri.html">Soft administrare blocuri</a>
+      </div>
+    </li>
+    <li><a href="administrator.html">Administrator bloc</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="legislatie.html">Legislatie</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="ps-hero">
+  <div class="ps-hero-inner">
+    <div>
+      <div class="ps-breadcrumb">
+        <a href="index.html">Acasa</a>
+        <span>›</span>
+        <a href="index.html#zone">Administrare blocuri</a>
+        <span>›</span>
+        Sector 3
+      </div>
+      <h1>Administrare blocuri<br>Sector 3 Bucuresti</h1>
+      <p>Bloc Expert ofera asociatiilor de proprietari din Sectorul 3 servicii complete de administrare, asigurate de o echipa de profesionisti cu experienta — administrator atestat, contabili, juristi si personal tehnic specializat. Suntem in contact permanent cu autoritatile competente din sector pentru a rezolva prompt orice situatie.</p>
+      <div class="ps-hero-actions">
+        <a href="index.html#contact" class="ps-btn-primary">Solicita o oferta</a>
+      </div>
+    </div>
+    <div class="ps-pret-card">
+      <div class="ps-pret-label">Administrator</div>
+      <div class="ps-pret-val" style="font-size:22px; line-height:1.3;">Atestat<br>Legea 196/2018</div>
+      <div class="ps-pret-sub">Sector 3 Bucuresti</div>
+    </div>
+  </div>
+</div>
+
+<div class="ps-body">
+  <main class="ps-main">
+
+    <div class="ps-section">
+      <div class="ps-section-label">Echipa specializata</div>
+      <h2>Cine administreaza blocul dvs. in Sectorul 3</h2>
+      <p style="font-size:15px; color:var(--text-mid); line-height:1.75; margin-bottom:24px;">
+        Sectorul 3 este unul dintre cele mai populate sectoare ale Capitalei, iar echipa Bloc Expert este pregatita sa gestioneze eficient asociatii de toate dimensiunile din aceasta zona. Mentinem o relatie de colaborare constanta cu Primaria Sector 3, ADP Sector 3, Politia Locala Sector 3, pentru a interveni rapid si eficient in orice situatie.
+      </p>
+      <ul class="ps-list">
+        <li class="ps-list-item">
+          <div class="ps-list-main"><span class="ps-dot"></span><span>Administrator de bloc cu certificat de calificare si atestat, in conformitate cu Legea 196/2018</span></div>
+        </li>
+        <li class="ps-list-item">
+          <div class="ps-list-main"><span class="ps-dot"></span><span>Experti contabili autorizati cu experienta in evidenta financiara a asociatiilor de proprietari</span></div>
+        </li>
+        <li class="ps-list-item">
+          <div class="ps-list-main"><span class="ps-dot"></span><span>Economisti si juristi cu specializare in dreptul asociatiilor de proprietari</span></div>
+        </li>
+        <li class="ps-list-item">
+          <div class="ps-list-main"><span class="ps-dot"></span><span>Personal tehnic calificat — instalatori si electricieni — disponibili pentru interventii rapide</span></div>
+        </li>
+        <li class="ps-list-item">
+          <div class="ps-list-main"><span class="ps-dot"></span><span>Colaborare permanenta cu Primaria Sector 3, ADP Sector 3, Politia Locala Sector 3</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="ps-section">
+      <div class="ps-section-label">Cadru contractual</div>
+      <h2>Contractul de administrare in Sectorul 3</h2>
+      <p style="font-size:15px; color:var(--text-mid); line-height:1.75; margin-bottom:20px;">
+        Preluarea administrarii se face in baza hotararii adunarii generale a asociatiei, urmata de incheierea unui Contract de Prestari Servicii. Contractul poate fi stabilit pe termen determinat cu posibilitate de reinnoire, sau pe termen nedeterminat cu clauze clare de reziliere.
+      </p>
+      <ul class="ps-list">
+        <li class="ps-list-item">
+          <div class="ps-list-main"><span class="ps-dot"></span><span>Toate activitatile respecta integral prevederile Legii 196/2018 si reglementarile complementare in vigoare</span></div>
+        </li>
+        <li class="ps-list-item">
+          <div class="ps-list-main"><span class="ps-dot"></span><span>Modificarile legislative sunt implementate imediat pentru a proteja asociatia de riscuri juridice sau financiare</span></div>
+        </li>
+        <li class="ps-list-item">
+          <div class="ps-list-main"><span class="ps-dot"></span><span>Supraveghere continua a cadrului legal si adaptare rapida la orice schimbare de reglementare</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="ps-section">
+      <div class="ps-section-label">Ce includem</div>
+      <h2>Servicii de administrare blocuri Sector 3</h2>
+      <ul class="ps-list">
+        <li class="ps-list-item">
+          <div class="ps-list-main"><span class="ps-dot"></span><span>Administrare financiara — elaborarea lunara a listelor de intretinere si contabilitate in partida simpla</span></div>
+        </li>
+        <li class="ps-list-item">
+          <div class="ps-list-main"><span class="ps-dot"></span><span>Administrare fiscala — gestionarea obligatiilor fiscale ale asociatiei cu actualizare permanenta</span></div>
+        </li>
+        <li class="ps-list-item">
+          <div class="ps-list-main"><span class="ps-dot"></span><span>Servicii juridice — consultanta specializata pentru problemele legale ale asociatiei</span></div>
+        </li>
+        <li class="ps-list-item">
+          <div class="ps-list-main"><span class="ps-dot"></span><span>Administrare tehnica — monitorizare, intretinere si interventii rapide prin tehnicieni calificati</span></div>
+        </li>
+        <li class="ps-list-item">
+          <div class="ps-list-main"><span class="ps-dot"></span><span>Servicii de curatenie pentru spatiile comune ale blocului</span></div>
+        </li>
+        <li class="ps-list-item">
+          <div class="ps-list-main"><span class="ps-dot"></span><span>Acces permanent la platforma blocexpert.ro — rapoarte financiare, situatii contabile si plati online</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="ps-tarife">
+      <div class="ps-tarife-text">
+        <h3>Solicita o oferta pentru Sectorul 3</h3>
+        <p>Tarifele sunt adaptate in functie de numarul de apartamente, locatia imobilului si situatia curenta a asociatiei. Contactati-ne pentru o propunere personalizata si fara obligatii.</p>
+      </div>
+      <div class="ps-tarife-nums">
+        <div class="ps-tarife-num">
+          <span class="val">Atestat</span>
+          <span class="lbl">Administrator calificat</span>
+        </div>
+        <div class="ps-tarife-num">
+          <span class="val">Online</span>
+          <span class="lbl">Acces permanent la rapoarte</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <aside class="ps-sidebar">
+    <div class="ps-card">
+      <div class="ps-card-title">Solicita oferta</div>
+      <p>Administrator atestat disponibil pentru asociatiile din Sectorul 3 Bucuresti.</p>
+      <a href="index.html#contact" class="ps-card-btn">Solicita oferta acum</a>
+    </div>
+    <div class="ps-card ps-card-nav">
+      <div class="ps-card-title">Administrare blocuri</div>
+      <ul>
+        <li><a href="pachetstart.html">Pachet Start</a></li>
+        <li><a href="sector1.html">Sector 1</a></li>
+        <li><a href="sector2.html">Sector 2</a></li>
+        <li><a href="sector3.html" class="active">Sector 3</a></li>
+        <li><a href="sector4.html">Sector 4</a></li>
+        <li><a href="sector5.html">Sector 5</a></li>
+        <li><a href="sector6.html">Sector 6</a></li>
+        <li><a href="ilfov.html">Ilfov</a></li>
+        <li><a href="popesti.html">Popesti-Leordeni</a></li>
+        <li><a href="voluntari.html">Voluntari</a></li>
+        <li><a href="ploiesti.html">Ploiesti</a></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<div class="ps-cta-final">
+  <h2>Solicita o oferta pentru Sectorul 3</h2>
+  <p>Completati formularul si va vom contacta cu o propunere adaptata nevoilor asociatiei din Sectorul 3 Bucuresti.</p>
+  <a href="index.html#contact" class="ps-btn-primary">Solicita oferta acum</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Bloc Expert" />
+      <p>Firma specializata in administrarea blocurilor si imobilelor rezidentiale din Bucuresti si Ilfov.</p>
+      <a href="mailto:info@blocexpertsrl.ro" class="footer-mail">info@blocexpertsrl.ro</a>
+    </div>
+    <div class="footer-col">
+      <h4>Adm. blocuri</h4>
+      <ul>
+        <li><a href="pachetstart.html">Pachet Start</a></li>
+        <li><a href="sector1.html">Sector 1</a></li>
+        <li><a href="sector2.html">Sector 2</a></li>
+        <li><a href="sector3.html">Sector 3</a></li>
+        <li><a href="sector4.html">Sector 4</a></li>
+        <li><a href="sector5.html">Sector 5</a></li>
+        <li><a href="sector6.html">Sector 6</a></li>
+        <li><a href="ilfov.html">Ilfov</a></li>
+        <li><a href="popesti.html">Popesti-Leordeni</a></li>
+        <li><a href="voluntari.html">Voluntari</a></li>
+        <li><a href="ploiesti.html">Ploiesti</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Adm. imobile</h4>
+      <ul>
+        <li><a href="administrareinfo.html">Info administrare</a></li>
+        <li><a href="imobil1.html">Sector 1</a></li>
+        <li><a href="imobil2.html">Sector 2</a></li>
+        <li><a href="imobil3.html">Sector 3</a></li>
+        <li><a href="imobil4.html">Sector 4</a></li>
+        <li><a href="imobil5.html">Sector 5</a></li>
+        <li><a href="imobil6.html">Sector 6</a></li>
+        <li><a href="imobililfov.html">Ilfov</a></li>
+        <li><a href="imobilpopesti.html">Popesti-Leordeni</a></li>
+        <li><a href="imobilvoluntar.html">Voluntari</a></li>
+        <li><a href="imobilploiesti.html">Ploiesti</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Servicii</h4>
+      <ul>
+        <li><a href="administrare-financiara.html">Adm. financiara</a></li>
+        <li><a href="administrare-fiscala.html">Adm. fiscala</a></li>
+        <li><a href="administrare-tehnica.html">Adm. tehnica</a></li>
+        <li><a href="intretinere-reparatii.html">Intretinere</a></li>
+        <li><a href="management-proiect.html">Management proiect</a></li>
+        <li><a href="monitorizare-tehnica.html">Monitorizare</a></li>
+        <li><a href="curatenie-blocuri.html">Curatenie</a></li>
+        <li><a href="servicii-juridice.html">Servicii juridice</a></li>
+        <li><a href="soft-administrare-blocuri.html">Soft administrare</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Pagini</h4>
+      <ul>
+        <li><a href="administrator.html">Administrator bloc</a></li>
+    <li><a href="blog.html">Blog</a></li>
+        <li><a href="legislatie.html">Legislatie</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="politica.html">Politica de confidentialitate</a></li>
+        <li><a href="termeni.html">Termeni si conditii</a></li>
+        <li><a href="cookies.html">Politica cookies</a></li>
+      </ul>
+      <div class="footer-legal-badges">
+        <a href="https://anpc.ro/ce-este-anpc/" target="_blank" rel="nofollow noopener">
+          <img src="anpc.png" alt="ANPC" class="footer-legal-badge" />
+        </a>
+        <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="nofollow noopener">
+          <img src="sol.png" alt="SOL" class="footer-legal-badge" />
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Bloc Expert — Firma de administrare blocuri</span>
+<span>Realizat de <a href="https://velichi-luca.agency" target="_blank">velichi-luca.agency</a></span>
+  </div>
+</footer>
+
+<script>
+  const toggles = document.querySelectorAll('.dropdown-toggle');
+
+  toggles.forEach(function(toggle) {
+    const li = toggle.closest('li');
+    toggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const isOpen = li.classList.contains('open');
+      // Inchide toate
+      document.querySelectorAll('.nav-links li').forEach(function(el) {
+        el.classList.remove('open');
+      });
+      if (!isOpen) li.classList.add('open');
+    });
+  });
+
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.nav-links li').forEach(function(el) {
+      el.classList.remove('open');
+    });
+  });
+</script>
+<script>
+  // Mobile nav toggle
+  const mobileBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+  const navEl = document.querySelector('nav');
+  if (mobileBtn) {
+    mobileBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      navLinks.classList.toggle('mobile-open');
+      navEl.classList.toggle('nav-mobile-open');
+    });
+  }
+</script>
+
+</body>
+</html>
