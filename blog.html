@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Administrare blocuri Ilfov | Administrator atestat | Bloc Expert</title>
-  <meta name="description" content="Administrare blocuri Ilfov - administrator bloc atestat pentru asociatii de proprietari din judetul Ilfov. Servicii complete, conformitate Legea 196/2018." />
+  <title>Blog administrare blocuri si imobile | Bloc Expert</title>
+  <meta name="description" content="Articole si informatii utile despre administrarea blocurilor, imobilelor rezidentiale, legislatia in vigoare si drepturile asociatiilor de proprietari." />
   <link rel="icon" type="image/png" href="logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1372,32 +1372,173 @@
     @media (max-width: 400px) {
       .footer-top { grid-template-columns: 1fr; }
     }
+  
+
+    .blog-hero {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+      padding: 72px 5% 60px;
+      color: #fff;
+    }
+
+    .blog-hero-inner { max-width: 700px; }
+
+    .blog-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .blog-hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+
+    .blog-hero p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.75;
+    }
+
+    .blog-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 5%;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+    }
+
+    .blog-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover { box-shadow: 0 8px 32px rgba(46,59,123,0.1); transform: translateY(-3px); }
+
+    .blog-card-img {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .blog-card-img svg {
+      width: 48px;
+      height: 48px;
+      stroke: rgba(255,255,255,0.3);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .blog-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+
+    .blog-card-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy-light);
+      margin-bottom: 10px;
+    }
+
+    .blog-card h2 {
+      font-family: 'Lora', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .blog-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .blog-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .blog-card-date { font-size: 12px; color: var(--text-muted); }
+
+    .blog-card-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .blog-card-link:hover { color: var(--navy-light); }
+
+    .blog-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-muted);
+    }
+
+    .blog-empty h3 {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .blog-empty p { font-size: 15px; line-height: 1.7; max-width: 480px; margin: 0 auto; }
+
+    @media (max-width: 900px) { .blog-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } .blog-hero { padding: 48px 5% 40px; } .blog-body { padding: 40px 5%; } }
   </style>
   <!-- SEO -->
   <meta name="robots" content="index, follow" />
-  <meta name="keywords" content="administrare blocuri ilfov, administrator bloc ilfov, firma administrare ilfov, administrare imobile ilfov" />
-  <link rel="canonical" href="https://blocexpertsrl.ro/ilfov.html" />
+  <meta name="keywords" content="blog administrare blocuri, articole asociatii proprietari, informatii administrare imobile, stiri administrare bloc" />
+  <link rel="canonical" href="https://blocexpertsrl.ro/blog.html" />
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://blocexpertsrl.ro/ilfov.html" />
-  <meta property="og:title" content="Administrare blocuri Ilfov | Administrator atestat | Bloc Expert" />
-  <meta property="og:description" content="Administrare blocuri Ilfov - administrator bloc atestat pentru asociatii de proprietari din judetul Ilfov. Servicii complete, conformitate Legea 196/2018." />
+  <meta property="og:url" content="https://blocexpertsrl.ro/blog.html" />
+  <meta property="og:title" content="Blog administrare blocuri si imobile | Bloc Expert" />
+  <meta property="og:description" content="Articole si informatii utile despre administrarea blocurilor, imobilelor rezidentiale, legislatia in vigoare si drepturile asociatiilor de proprietari." />
   <meta property="og:image" content="https://blocexpertsrl.ro/logo.png" />
   <meta property="og:locale" content="ro_RO" />
   <meta property="og:site_name" content="Bloc Expert" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Administrare blocuri Ilfov | Administrator atestat | Bloc Expert" />
-  <meta name="twitter:description" content="Administrare blocuri Ilfov - administrator bloc atestat pentru asociatii de proprietari din judetul Ilfov. Servicii complete, conformitate Legea 196/2018." />
+  <meta name="twitter:title" content="Blog administrare blocuri si imobile | Bloc Expert" />
+  <meta name="twitter:description" content="Articole si informatii utile despre administrarea blocurilor, imobilelor rezidentiale, legislatia in vigoare si drepturile asociatiilor de proprietari." />
   <meta name="twitter:image" content="https://blocexpertsrl.ro/logo.png" />
   <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Administrare blocuri Ilfov | Administrator atestat | Bloc Expert",
-    "description": "Administrare blocuri Ilfov - administrator bloc atestat pentru asociatii de proprietari din judetul Ilfov. Servicii complete, conformitate Legea 196/2018.",
-    "url": "https://blocexpertsrl.ro/ilfov.html",
+    "name": "Blog administrare blocuri si imobile | Bloc Expert",
+    "description": "Articole si informatii utile despre administrarea blocurilor, imobilelor rezidentiale, legislatia in vigoare si drepturile asociatiilor de proprietari.",
+    "url": "https://blocexpertsrl.ro/blog.html",
     "isPartOf": {
       "@type": "WebSite",
       "name": "Bloc Expert",
@@ -1419,34 +1560,10 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Administrare blocuri",
-      "item": "https://blocexpertsrl.ro/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Ilfov",
-      "item": "https://blocexpertsrl.ro/ilfov.html"
+      "name": "Blog",
+      "item": "https://blocexpertsrl.ro/blog.html"
     }
     ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Bloc Expert – Administrare blocuri Ilfov",
-    "description": "Servicii de administrare blocuri in Ilfov. Administrator bloc atestat, contabilitate, servicii tehnice si juridice.",
-    "url": "https://blocexpertsrl.ro/ilfov.html",
-    "email": "info@blocexpertsrl.ro",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Ilfov",
-      "addressCountry": "RO"
-    },
-    "areaServed": "Ilfov",
-    "serviceType": "Administrare blocuri",
-    "keywords": ["administrare blocuri ilfov", "administrator bloc ilfov", "firma administrare ilfov", "administrare imobile ilfov", "administrator atestat ilfov"]
   }
   </script>
 </head>
@@ -1514,182 +1631,138 @@
   </ul>
 </nav>
 
-<div class="ps-hero">
-  <div class="ps-hero-inner">
-    <div>
-      <div class="ps-breadcrumb">
-        <a href="index.html">Acasa</a>
-        <span>›</span>
-        <a href="index.html#zone">Administrare blocuri</a>
-        <span>›</span>
-        Ilfov
-      </div>
-      <h1>Administrare blocuri<br>Ilfov</h1>
-      <p>Bloc Expert asigura servicii complete de administrare blocuri pentru asociatiile de proprietari din judetul Ilfov. Echipa noastra este alcatuita din administrator atestat, experti contabili, juristi si personal tehnic calificat, mentinand o colaborare permanenta cu autoritatile locale din fiecare localitate ilfoveana.</p>
-      <div class="ps-hero-actions">
-        <a href="index.html#contact" class="ps-btn-primary">Solicita o oferta</a>
-      </div>
-    </div>
-    <div class="ps-pret-card">
-      <div class="ps-pret-label">Administrator</div>
-      <div class="ps-pret-val" style="font-size:22px; line-height:1.3;">Atestat<br>Legea 196/2018</div>
-      <div class="ps-pret-sub">Judetul Ilfov</div>
-    </div>
+<div class="blog-hero">
+  <div class="blog-hero-inner">
+    <span class="blog-eyebrow">Bloc Expert</span>
+    <h1>Blog administrare blocuri</h1>
+    <p>Articole, informatii utile si sfaturi practice despre administrarea blocurilor si imobilelor rezidentiale, legislatia in vigoare si drepturile asociatiilor de proprietari.</p>
   </div>
 </div>
 
-<div class="ps-body">
-  <main class="ps-main">
-
-    <div class="ps-section">
-      <div class="ps-section-label">Echipa specializata</div>
-      <h2>Administrare blocuri Ilfov — cine suntem</h2>
-      <p style="font-size:15px; color:var(--text-mid); line-height:1.75; margin-bottom:24px;">
-        Judetul Ilfov cunoaste o expansiune rapida a constructiilor rezidentiale, in special in localitatile din apropierea Capitalei. Bloc Expert este pregatit sa preia administrarea blocurilor si ansamblurilor rezidentiale noi sau existente, indiferent de dimensiunea sau structura asociatiei de proprietari. Colaboram activ cu autoritatile din fiecare localitate ilfoveana pentru a oferi servicii la standarde ridicate. Mentinem o colaborare activa cu Primaria si ADP din localitatile judetului Ilfov pentru a rezolva prompt orice situatie aparuta.
-      </p>
-      <ul class="ps-list">
-        <li class="ps-list-item">
-          <div class="ps-list-main"><span class="ps-dot"></span><span>Administrator de bloc cu certificat de calificare si atestat conform Legii 196/2018</span></div>
-        </li>
-        <li class="ps-list-item">
-          <div class="ps-list-main"><span class="ps-dot"></span><span>Experti contabili autorizati specializati in evidenta financiara a asociatiilor de proprietari</span></div>
-        </li>
-        <li class="ps-list-item">
-          <div class="ps-list-main"><span class="ps-dot"></span><span>Economisti si juristi cu experienta in dreptul asociatiilor de proprietari</span></div>
-        </li>
-        <li class="ps-list-item">
-          <div class="ps-list-main"><span class="ps-dot"></span><span>Personal tehnic calificat — instalatori si electricieni — cu interventii rapide inclusiv in afara programului</span></div>
-        </li>
-        <li class="ps-list-item">
-          <div class="ps-list-main"><span class="ps-dot"></span><span>Acces gratuit la platforma online blocexpert.ro pentru evidenta contabila si rapoarte financiare</span></div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="ps-section">
-      <div class="ps-section-label">Cadru contractual</div>
-      <h2>Contractul de administrare in Ilfov</h2>
-      <p style="font-size:15px; color:var(--text-mid); line-height:1.75; margin-bottom:20px;">
-        Serviciile de administrare se preiau pe baza hotararii adunarii generale a asociatiei, urmata de semnarea Contractului de Prestari Servicii. Contractul poate fi incheiat pe durata determinata cu posibilitate de prelungire, sau pe durata nedeterminata cu conditii clare de incetare.
-      </p>
-      <ul class="ps-list">
-        <li class="ps-list-item">
-          <div class="ps-list-main"><span class="ps-dot"></span><span>Toate activitatile respecta prevederile Legii 196/2018 si reglementarile complementare in vigoare</span></div>
-        </li>
-        <li class="ps-list-item">
-          <div class="ps-list-main"><span class="ps-dot"></span><span>Modificarile legislative sunt implementate imediat pentru a proteja asociatia de orice riscuri</span></div>
-        </li>
-        <li class="ps-list-item">
-          <div class="ps-list-main"><span class="ps-dot"></span><span>Transparenta totala prin acces online permanent la situatia financiara a imobilului</span></div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="ps-section">
-      <div class="ps-section-label">Ce includem</div>
-      <h2>Servicii de administrare blocuri Ilfov</h2>
-      <ul class="ps-list">
-        <li class="ps-list-item">
-          <div class="ps-list-main"><span class="ps-dot"></span><span>Administrare financiara — elaborarea lunara a listelor de intretinere si contabilitate in partida simpla</span></div>
-        </li>
-        <li class="ps-list-item">
-          <div class="ps-list-main"><span class="ps-dot"></span><span>Administrare fiscala — gestionarea obligatiilor fiscale ale asociatiei cu actualizare permanenta</span></div>
-        </li>
-        <li class="ps-list-item">
-          <div class="ps-list-main"><span class="ps-dot"></span><span>Servicii juridice — consultanta specializata pentru problemele legale ale asociatiei</span></div>
-        </li>
-        <li class="ps-list-item">
-          <div class="ps-list-main"><span class="ps-dot"></span><span>Administrare tehnica — monitorizare, intretinere curenta si interventii rapide prin personal calificat</span></div>
-        </li>
-        <li class="ps-list-item">
-          <div class="ps-list-main"><span class="ps-dot"></span><span>Servicii de curatenie pentru spatiile comune ale imobilului</span></div>
-        </li>
-        <li class="ps-list-item">
-          <div class="ps-list-main"><span class="ps-dot"></span><span>Acces permanent la platforma blocexpert.ro — rapoarte, situatii financiare si plati online</span></div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="ps-tarife">
-      <div class="ps-tarife-text">
-        <h3>Solicita o oferta pentru Ilfov</h3>
-        <p>Tarifele sunt personalizate in functie de numarul de apartamente, localitatea si situatia financiara a asociatiei. Contactati-ne pentru o propunere fara obligatii.</p>
-      </div>
-      <div class="ps-tarife-nums">
-        <div class="ps-tarife-num">
-          <span class="val">Atestat</span>
-          <span class="lbl">Administrator calificat</span>
-        </div>
-        <div class="ps-tarife-num">
-          <span class="val">Online</span>
-          <span class="lbl">Acces permanent la rapoarte</span>
+<div class="blog-body">
+  <div class="blog-grid">
+    <a href="blog-sector1.html" class="blog-card" style="text-decoration:none;">
+      <div class="blog-card-img" style="padding:0; overflow:hidden;"><img src="blog-sector1.jpg" alt="Administrare blocuri Sector 1 Bucuresti" style="width:100%; height:100%; object-fit:cover; display:block;" /></div>
+      <div class="blog-card-body">
+        <div class="blog-card-tag">Sector 1</div>
+        <h2>Importanta administrarii profesionale a blocurilor din Sectorul 1</h2>
+        <p>De ce administrarea profesionala face diferenta in Sectorul 1 si cum protejeaza valoarea proprietatii tale.</p>
+        <div class="blog-card-footer">
+          <span class="blog-card-date">Ianuarie 2026</span>
+          <span class="blog-card-link">Citeste →</span>
         </div>
       </div>
-    </div>
-
-  </main>
-
-  <aside class="ps-sidebar">
-    <div class="ps-card">
-      <div class="ps-card-title">Solicita oferta</div>
-      <p>Administrator atestat disponibil pentru asociatiile de proprietari din judetul Ilfov.</p>
-      <a href="index.html#contact" class="ps-card-btn">Solicita oferta acum</a>
-    </div>
-    <div class="ps-card ps-card-nav">
-      <div class="ps-card-title">Administrare blocuri</div>
-      <ul>
-        <li><a href="pachetstart.html">Pachet Start</a></li>
-        <li><a href="sector1.html">Sector 1</a></li>
-        <li><a href="sector2.html">Sector 2</a></li>
-        <li><a href="sector3.html">Sector 3</a></li>
-        <li><a href="sector4.html">Sector 4</a></li>
-        <li><a href="sector5.html">Sector 5</a></li>
-        <li><a href="sector6.html">Sector 6</a></li>
-        <li><a href="ilfov.html" class="active">Ilfov</a></li>
-        <li><a href="popesti.html">Popesti-Leordeni</a></li>
-        <li><a href="voluntari.html">Voluntari</a></li>
-        <li><a href="ploiesti.html">Ploiesti</a></li>
-      </ul>
-    </div>
-  </aside>
-</div>
-
-<div class="ps-cta-final">
-  <h2>Solicita o oferta pentru Ilfov</h2>
-  <p>Completati formularul si va vom contacta cu o propunere adaptata nevoilor asociatiei din judetul Ilfov.</p>
-  <a href="index.html#contact" class="ps-btn-primary">Solicita oferta acum</a>
-</div>
-
-
-<!-- INTERNAL LINKS SEO -->
-<section style="background:var(--bg-light); padding:40px 5%; border-top:1px solid var(--border);">
-  <div style="max-width:1100px; margin:0 auto;">
-    <p style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:16px;">Servicii conexe</p>
-    <ul style="list-style:none; display:flex; flex-wrap:wrap; gap:10px;">
-          <li><a href="imobililfov.html">Administrare imobile Ilfov</a></li>
-          <li><a href="administrare-financiara.html">Administrare financiara Ilfov</a></li>
-          <li><a href="administrare-tehnica.html">Administrare tehnica Ilfov</a></li>
-          <li><a href="pachetstart.html">Pachet Start administrare bloc</a></li>
-    </ul>
+    </a>
+    <a href="blog-sector2.html" class="blog-card" style="text-decoration:none;">
+      <div class="blog-card-img" style="padding:0; overflow:hidden;"><img src="blog-sector2.jpg" alt="Administrare blocuri Sector 2 Bucuresti" style="width:100%; height:100%; object-fit:cover; display:block;" /></div>
+      <div class="blog-card-body">
+        <div class="blog-card-tag">Sector 2</div>
+        <h2>Administrarea blocurilor in Sectorul 2 — ghid pentru asociatii</h2>
+        <p>Tot ce trebuie sa stie orice asociatie de proprietari din Sectorul 2 despre administrarea profesionala.</p>
+        <div class="blog-card-footer">
+          <span class="blog-card-date">Ianuarie 2026</span>
+          <span class="blog-card-link">Citeste →</span>
+        </div>
+      </div>
+    </a>
+    <a href="blog-sector3.html" class="blog-card" style="text-decoration:none;">
+      <div class="blog-card-img" style="padding:0; overflow:hidden;"><img src="blog-sector3.jpg" alt="Administrare blocuri Sector 3 Bucuresti" style="width:100%; height:100%; object-fit:cover; display:block;" /></div>
+      <div class="blog-card-body">
+        <div class="blog-card-tag">Sector 3</div>
+        <h2>De ce conteaza un administrator atestat in Sectorul 3</h2>
+        <p>Cum transforma un administrator atestat viata dintr-un bloc din Sectorul 3 Bucuresti.</p>
+        <div class="blog-card-footer">
+          <span class="blog-card-date">Februarie 2026</span>
+          <span class="blog-card-link">Citeste →</span>
+        </div>
+      </div>
+    </a>
+    <a href="blog-sector4.html" class="blog-card" style="text-decoration:none;">
+      <div class="blog-card-img" style="padding:0; overflow:hidden;"><img src="blog-sector4.jpg" alt="Administrare blocuri Sector 4 Bucuresti" style="width:100%; height:100%; object-fit:cover; display:block;" /></div>
+      <div class="blog-card-body">
+        <div class="blog-card-tag">Sector 4</div>
+        <h2>Administrarea blocurilor in Sectorul 4 — provocari si solutii</h2>
+        <p>Provocarile specifice ale administrarii blocurilor din Sectorul 4 si cum le rezolva un profesionist.</p>
+        <div class="blog-card-footer">
+          <span class="blog-card-date">Februarie 2026</span>
+          <span class="blog-card-link">Citeste →</span>
+        </div>
+      </div>
+    </a>
+    <a href="blog-sector5.html" class="blog-card" style="text-decoration:none;">
+      <div class="blog-card-img" style="padding:0; overflow:hidden;"><img src="blog-sector5.jpg" alt="Administrare blocuri Sector 5 Bucuresti" style="width:100%; height:100%; object-fit:cover; display:block;" /></div>
+      <div class="blog-card-body">
+        <div class="blog-card-tag">Sector 5</div>
+        <h2>Cum transforma un administrator profesionist blocul din Sectorul 5</h2>
+        <p>De la spatii comune neingrijite la un bloc exemplar — povestea unei administratii profesioniste in Sectorul 5.</p>
+        <div class="blog-card-footer">
+          <span class="blog-card-date">Martie 2026</span>
+          <span class="blog-card-link">Citeste →</span>
+        </div>
+      </div>
+    </a>
+    <a href="blog-sector6.html" class="blog-card" style="text-decoration:none;">
+      <div class="blog-card-img" style="padding:0; overflow:hidden;"><img src="blog-sector6.jpg" alt="Administrare blocuri Sector 6 Bucuresti" style="width:100%; height:100%; object-fit:cover; display:block;" /></div>
+      <div class="blog-card-body">
+        <div class="blog-card-tag">Sector 6</div>
+        <h2>Ghid complet despre administrarea blocurilor in Sectorul 6</h2>
+        <p>Drepturile proprietarilor, obligatiile asociatiei si specificul cartierelor din Sectorul 6.</p>
+        <div class="blog-card-footer">
+          <span class="blog-card-date">Martie 2026</span>
+          <span class="blog-card-link">Citeste →</span>
+        </div>
+      </div>
+    </a>
+    <a href="blog-ilfov.html" class="blog-card" style="text-decoration:none;">
+      <div class="blog-card-img" style="padding:0; overflow:hidden;"><img src="blog-ilfov.jpg" alt="Administrare blocuri Ilfov" style="width:100%; height:100%; object-fit:cover; display:block;" /></div>
+      <div class="blog-card-body">
+        <div class="blog-card-tag">Ilfov</div>
+        <h2>De ce creste cererea de administrare profesionala a blocurilor in Ilfov</h2>
+        <p>Explozia rezidentiala din Ilfov si provocarile administrarii ansamblurilor rezidentiale noi.</p>
+        <div class="blog-card-footer">
+          <span class="blog-card-date">Aprilie 2026</span>
+          <span class="blog-card-link">Citeste →</span>
+        </div>
+      </div>
+    </a>
+    <a href="blog-popesti.html" class="blog-card" style="text-decoration:none;">
+      <div class="blog-card-img" style="padding:0; overflow:hidden;"><img src="blog-popesti.jpg" alt="Administrare blocuri Popesti-Leordeni" style="width:100%; height:100%; object-fit:cover; display:block;" /></div>
+      <div class="blog-card-body">
+        <div class="blog-card-tag">Popesti-Leordeni</div>
+        <h2>Administrarea blocurilor in Popesti-Leordeni — ghid practic</h2>
+        <p>Specificul ansamblurilor rezidentiale noi din Popesti-Leordeni si cum alegi firma de administrare potrivita.</p>
+        <div class="blog-card-footer">
+          <span class="blog-card-date">Aprilie 2026</span>
+          <span class="blog-card-link">Citeste →</span>
+        </div>
+      </div>
+    </a>
+    <a href="blog-voluntari.html" class="blog-card" style="text-decoration:none;">
+      <div class="blog-card-img" style="padding:0; overflow:hidden;"><img src="blog-voluntari.jpg" alt="Administrare blocuri Voluntari" style="width:100%; height:100%; object-fit:cover; display:block;" /></div>
+      <div class="blog-card-body">
+        <div class="blog-card-tag">Voluntari</div>
+        <h2>Administrarea blocurilor in Voluntari — ghid pentru proprietari</h2>
+        <p>Tot ce trebuie sa stii despre administrarea profesionala in cel mai dinamic oras din Ilfov.</p>
+        <div class="blog-card-footer">
+          <span class="blog-card-date">Mai 2026</span>
+          <span class="blog-card-link">Citeste →</span>
+        </div>
+      </div>
+    </a>
+    <a href="blog-ploiesti.html" class="blog-card" style="text-decoration:none;">
+      <div class="blog-card-img" style="padding:0; overflow:hidden;"><img src="blog-ploiesti.jpg" alt="Administrare blocuri Ploiesti" style="width:100%; height:100%; object-fit:cover; display:block;" /></div>
+      <div class="blog-card-body">
+        <div class="blog-card-tag">Ploiesti</div>
+        <h2>Administrarea blocurilor in Ploiesti — specificul unui oras cu traditie</h2>
+        <p>Provocarile si solutiile pentru asociatiile de proprietari din Ploiesti, Prahova.</p>
+        <div class="blog-card-footer">
+          <span class="blog-card-date">Mai 2026</span>
+          <span class="blog-card-link">Citeste →</span>
+        </div>
+      </div>
+    </a>
   </div>
-</section>
-<style>
-section[style*="padding:40px"] ul li a {
-  display:inline-block;
-  padding:7px 16px;
-  background:var(--bg-white);
-  border:1px solid var(--border);
-  border-radius:20px;
-  font-size:13px;
-  color:var(--text-mid);
-  text-decoration:none;
-  transition:border-color 0.2s, color 0.2s;
-}
-section[style*="padding:40px"] ul li a:hover {
-  border-color:var(--navy);
-  color:var(--navy);
-}
-</style>
+</div>
 
 <!-- FOOTER -->
 <footer>

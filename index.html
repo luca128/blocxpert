@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bloc Expert – Firma de administrare blocuri</title>
-  <meta name="description" content="Bloc Expert ofera servicii complete de administrare blocuri si imobile pentru asociatiile de proprietari. Administrator atestat, contabilitate, servicii juridice, tehnice si de curatenie." />
+  <title>Administrare blocuri Bucuresti | Firma administrare bloc | Bloc Expert</title>
+  <meta name="description" content="Bloc Expert - firma specializata in administrare blocuri si imobile din Bucuresti si Ilfov. Administrator atestat, contabilitate, servicii tehnice si juridice. Solicita oferta!" />
   <link rel="icon" type="image/png" href="logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1009,12 +1009,96 @@
     }
   </style>
   <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+  <!-- SEO -->
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="administrare blocuri bucuresti, firma administrare bloc, administrator bloc atestat, administrare imobile bucuresti, asociatii de proprietari" />
+  <link rel="canonical" href="https://blocexpertsrl.ro/" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://blocexpertsrl.ro/" />
+  <meta property="og:title" content="Bloc Expert – Firma administrare blocuri Bucuresti" />
+  <meta property="og:description" content="Bloc Expert - firma specializata in administrare blocuri si imobile din Bucuresti si Ilfov. Administrator atestat, contabilitate, servicii tehnice si juridice. Solicita oferta!" />
+  <meta property="og:image" content="https://blocexpertsrl.ro/logo.png" />
+  <meta property="og:locale" content="ro_RO" />
+  <meta property="og:site_name" content="Bloc Expert" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bloc Expert – Firma administrare blocuri Bucuresti" />
+  <meta name="twitter:description" content="Bloc Expert - firma specializata in administrare blocuri si imobile din Bucuresti si Ilfov. Administrator atestat, contabilitate, servicii tehnice si juridice. Solicita oferta!" />
+  <meta name="twitter:image" content="https://blocexpertsrl.ro/logo.png" />
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Bloc Expert",
+    "description": "Firma specializata in administrare blocuri si imobile rezidentiale din Bucuresti si Ilfov",
+    "url": "https://blocexpertsrl.ro",
+    "email": "info@blocexpertsrl.ro",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bucuresti",
+      "addressCountry": "RO"
+    },
+    "areaServed": ["Sector 1", "Sector 2", "Sector 3", "Sector 4", "Sector 5", "Sector 6", "Ilfov", "Popesti-Leordeni", "Voluntari", "Ploiesti"],
+    "serviceType": ["Administrare blocuri", "Administrare imobile", "Administrator bloc atestat"],
+    "priceRange": "De la 9.90 lei/apartament/luna"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ce servicii ofera Bloc Expert?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bloc Expert ofera administrare financiara, fiscala, tehnica, servicii juridice, curatenie blocuri si acces la platforma online blocexpert.ro pentru asociatiile de proprietari din Bucuresti si Ilfov."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cat costa administrarea unui bloc?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tarifele de administrare bloc pornesc de la 9.90 lei pe apartament pe luna, cu un onorariu minim de 499 lei. Pretul final depinde de numarul de apartamente, locatie si serviciile solicitate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "In ce zone din Bucuresti activeaza Bloc Expert?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bloc Expert ofera servicii de administrare blocuri in toate cele 6 sectoare ale Bucurestiului, precum si in judetul Ilfov, Popesti-Leordeni, Voluntari si Ploiesti."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ce inseamna administrator bloc atestat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un administrator bloc atestat detine certificat de calificare profesionala si atestat emis de primarie, conform Legii 196/2018. Bloc Expert lucreaza exclusiv cu administratori atestati."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cum pot solicita o oferta de administrare?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Puteti completa formularul de contact de pe site cu datele imobilului si vom reveni cu o oferta personalizata in cel mai scurt timp posibil."
+      }
+    }
+    ]
+  }
+  </script>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <img src="logo.png" alt="Bloc Expert" />
   </a>
   <button class="mobile-menu-btn" aria-label="Meniu">
@@ -1478,7 +1562,7 @@
     </div>
 
     <div class="contact-form">
-      <form action="mailto:info@blocexpertsrl.ro" method="post" enctype="text/plain">
+      <form id="contactForm" action="contact.php" method="post">
         <div class="form-row">
           <div class="form-group">
             <label>Nume si prenume <span>*</span></label>
@@ -1512,9 +1596,90 @@
           <textarea name="Mesaj" placeholder="Descrie pe scurt situatia actuala si cerintele asociatiei..." required></textarea>
         </div>
         <div class="h-captcha" data-sitekey="5bfe9a14-c638-45e0-8860-7d44dd76994c" style="margin-bottom: 16px;"></div>
-        <button type="submit" class="form-submit">Trimite solicitarea</button>
+        <button type="submit" class="form-submit" id="submitBtn">Trimite solicitarea</button>
+        <div id="formMsg" style="display:none; margin-top:14px; padding:12px 16px; border-radius:6px; font-size:14px; font-weight:500;"></div>
         <p class="form-notice">Vei primi un raspuns in cel mai scurt timp posibil.</p>
       </form>
+
+      <script>
+      document.getElementById("contactForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        var btn = document.getElementById("submitBtn");
+        var msg = document.getElementById("formMsg");
+        btn.disabled = true;
+        btn.textContent = "Se trimite...";
+        msg.style.display = "none";
+
+        var formData = new FormData(this);
+
+        fetch("contact.php", {
+          method: "POST",
+          body: formData
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          msg.style.display = "block";
+          if (data.status === "success") {
+            msg.style.background = "#d1fae5";
+            msg.style.color = "#065f46";
+            msg.style.border = "1px solid #6ee7b7";
+            msg.textContent = data.message;
+            document.getElementById("contactForm").reset();
+            if (typeof hcaptcha !== "undefined") hcaptcha.reset();
+          } else {
+            msg.style.background = "#fee2e2";
+            msg.style.color = "#991b1b";
+            msg.style.border = "1px solid #fca5a5";
+            msg.textContent = data.message;
+          }
+          btn.disabled = false;
+          btn.textContent = "Trimite solicitarea";
+        })
+        .catch(function() {
+          msg.style.display = "block";
+          msg.style.background = "#fee2e2";
+          msg.style.color = "#991b1b";
+          msg.style.border = "1px solid #fca5a5";
+          msg.textContent = "A aparut o eroare. Te rugam sa incerci din nou sau sa ne contactezi direct la info@blocexpertsrl.ro.";
+          btn.disabled = false;
+          btn.textContent = "Trimite solicitarea";
+        });
+      });
+      </script>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:56px 5%; background:var(--bg-white);">
+  <div style="max-width:800px; margin:0 auto;">
+    <p style="font-size:11px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--navy-light); margin-bottom:10px;">Intrebari frecvente</p>
+    <h2 style="font-family:'Lora',serif; font-size:28px; font-weight:700; color:var(--text-dark); margin-bottom:32px;">Intrebari frecvente</h2>
+    <style>
+      .faq-item { border-bottom:1px solid var(--border); padding:20px 0; }
+      .faq-item:last-child { border-bottom:none; }
+      .faq-q { font-size:16px; font-weight:700; color:var(--text-dark); margin-bottom:8px; line-height:1.4; }
+      .faq-a { font-size:14px; color:var(--text-muted); line-height:1.75; margin:0; }
+    </style>
+    <div class="faq-item">
+      <h3 class="faq-q">Ce servicii ofera Bloc Expert?</h3>
+      <p class="faq-a">Bloc Expert ofera administrare financiara, fiscala, tehnica, servicii juridice, curatenie blocuri si acces la platforma online blocexpert.ro pentru asociatiile de proprietari din Bucuresti si Ilfov.</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="faq-q">Cat costa administrarea unui bloc?</h3>
+      <p class="faq-a">Tarifele de administrare bloc pornesc de la 9.90 lei pe apartament pe luna, cu un onorariu minim de 499 lei. Pretul final depinde de numarul de apartamente, locatie si serviciile solicitate.</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="faq-q">In ce zone din Bucuresti activeaza Bloc Expert?</h3>
+      <p class="faq-a">Bloc Expert ofera servicii de administrare blocuri in toate cele 6 sectoare ale Bucurestiului, precum si in judetul Ilfov, Popesti-Leordeni, Voluntari si Ploiesti.</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="faq-q">Ce inseamna administrator bloc atestat?</h3>
+      <p class="faq-a">Un administrator bloc atestat detine certificat de calificare profesionala si atestat emis de primarie, conform Legii 196/2018. Bloc Expert lucreaza exclusiv cu administratori atestati.</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="faq-q">Cum pot solicita o oferta de administrare?</h3>
+      <p class="faq-a">Puteti completa formularul de contact de pe site cu datele imobilului si vom reveni cu o oferta personalizata in cel mai scurt timp posibil.</p>
     </div>
   </div>
 </section>
