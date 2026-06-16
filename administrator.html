@@ -10,8 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&display=swap" rel="stylesheet" />
   <style>
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { overflow-x: hidden; max-width: 100%; }
 
     :root {
       --navy: #2E3B7B;
@@ -937,17 +938,19 @@
       .dropdown-toggle::after { display: none; }
       .nav-links {
         display: none;
-        position: absolute;
+        position: fixed;
         top: 70px;
         left: 0;
         right: 0;
+        bottom: 0;
         background: var(--bg-white);
         border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
         flex-direction: column;
         padding: 8px 5%;
         gap: 0;
         z-index: 99;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         box-shadow: 0 8px 24px rgba(0,0,0,0.08);
       }
       .nav-links.mobile-open { display: flex; }
@@ -1009,274 +1012,55 @@
       .hero h1 { font-size: 24px; }
     }
   
-
     /* ADMINISTRATOR PAGE */
-    .adm-hero {
-      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 65%, var(--navy-light) 100%);
-      padding: 90px 5% 80px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-    }
-
+    .adm-hero { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 65%, var(--navy-light) 100%); padding: 90px 5% 80px; color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
     .adm-hero-content { flex: 1; max-width: 620px; }
-
-    .adm-eyebrow {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .adm-hero h1 {
-      font-family: 'Lora', serif;
-      font-size: clamp(30px, 4.5vw, 50px);
-      font-weight: 700;
-      line-height: 1.12;
-      color: #fff;
-      margin-bottom: 18px;
-    }
-
-    .adm-hero p {
-      font-size: 17px;
-      color: rgba(255,255,255,0.78);
-      line-height: 1.75;
-      margin-bottom: 32px;
-      max-width: 540px;
-    }
-
+    .adm-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: block; }
+    .adm-hero h1 { font-family: 'Lora', serif; font-size: clamp(30px, 4.5vw, 50px); font-weight: 700; line-height: 1.12; color: #fff; margin-bottom: 18px; }
+    .adm-hero p { font-size: 17px; color: rgba(255,255,255,0.78); line-height: 1.75; margin-bottom: 32px; max-width: 540px; }
     .adm-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-
-    .adm-btn-primary {
-      display: inline-block;
-      background: var(--accent);
-      color: var(--navy-dark);
-      padding: 13px 28px;
-      border-radius: var(--radius);
-      font-weight: 700;
-      font-size: 15px;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
+    .adm-btn-primary { display: inline-block; background: var(--accent); color: var(--navy-dark); padding: 13px 28px; border-radius: var(--radius); font-weight: 700; font-size: 15px; text-decoration: none; transition: opacity 0.2s; }
     .adm-btn-primary:hover { opacity: 0.88; }
-
-    .adm-btn-outline {
-      display: inline-block;
-      border: 2px solid rgba(255,255,255,0.4);
-      color: #fff;
-      padding: 13px 28px;
-      border-radius: var(--radius);
-      font-weight: 600;
-      font-size: 15px;
-      text-decoration: none;
-      transition: border-color 0.2s, background 0.2s;
-    }
+    .adm-btn-outline { display: inline-block; border: 2px solid rgba(255,255,255,0.4); color: #fff; padding: 13px 28px; border-radius: var(--radius); font-weight: 600; font-size: 15px; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
     .adm-btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
-
-    .adm-hero-badge {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 12px;
-      padding: 36px 44px;
-      text-align: center;
-      min-width: 220px;
-      flex-shrink: 0;
-      margin-right: 4%;
-    }
-
-    .adm-hero-badge .lbl {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .adm-hero-badge .val {
-      font-family: 'Lora', serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.3;
-      display: block;
-    }
-
-    .adm-hero-badge .sub {
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
-      margin-top: 6px;
-      display: block;
-    }
-
-    /* SECTIUNI INDEX STYLE */
+    .adm-hero-badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 36px 44px; text-align: center; min-width: 220px; flex-shrink: 0; margin-right: 4%; }
+    .adm-hero-badge .lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: block; }
+    .adm-hero-badge .val { font-family: 'Lora', serif; font-size: 22px; font-weight: 700; color: #fff; line-height: 1.3; display: block; }
+    .adm-hero-badge .sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 6px; display: block; }
     .adm-section { padding: 64px 5%; }
     .adm-section.bg-light { background: var(--bg-light); }
     .adm-section.bg-navy { background: var(--navy-dark); color: #fff; }
-
     .adm-section-inner { max-width: 1100px; margin: 0 auto; }
-
-    .adm-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--navy-light);
-      margin-bottom: 10px;
-    }
+    .adm-label { font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--navy-light); margin-bottom: 10px; }
     .adm-section.bg-navy .adm-label { color: var(--accent); }
-
-    .adm-h2 {
-      font-family: 'Lora', serif;
-      font-size: clamp(24px, 3vw, 36px);
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 14px;
-      line-height: 1.2;
-    }
+    .adm-h2 { font-family: 'Lora', serif; font-size: clamp(24px, 3vw, 36px); font-weight: 700; color: var(--text-dark); margin-bottom: 14px; line-height: 1.2; }
     .adm-section.bg-navy .adm-h2 { color: #fff; }
-
-    .adm-lead {
-      font-size: 16px;
-      color: var(--text-muted);
-      max-width: 600px;
-      line-height: 1.75;
-      margin-bottom: 44px;
-    }
+    .adm-lead { font-size: 16px; color: var(--text-muted); max-width: 600px; line-height: 1.75; margin-bottom: 44px; }
     .adm-section.bg-navy .adm-lead { color: rgba(255,255,255,0.65); }
-
-    /* CARD GRID - atributii */
-    .adm-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .adm-card {
-      background: var(--bg-white);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 28px 24px;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
+    .adm-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .adm-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 8px; padding: 28px 24px; transition: box-shadow 0.2s, transform 0.2s; }
     .adm-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
-
-    .adm-card-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--navy);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .adm-card-icon svg {
-      width: 22px; height: 22px;
-      stroke: #fff; fill: none;
-      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-    }
-    .adm-card h3 {
-      font-family: 'Lora', serif;
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 8px;
-    }
-    .adm-card p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.65;
-    }
-
-    /* ZONE GRID */
-    .adm-zone-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .adm-zone-link {
-      display: block;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 6px;
-      padding: 16px 18px;
-      text-decoration: none;
-      color: rgba(255,255,255,0.8);
-      font-size: 14px;
-      font-weight: 500;
-      transition: background 0.2s, color 0.2s;
-    }
+    .adm-card-icon { width: 44px; height: 44px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .adm-card-icon svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .adm-card h3 { font-family: 'Lora', serif; font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+    .adm-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+    .adm-zone-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .adm-zone-link { display: block; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 16px 18px; text-decoration: none; color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 500; transition: background 0.2s, color 0.2s; }
     .adm-zone-link:hover { background: rgba(255,255,255,0.14); color: #fff; }
-    .adm-zone-link span {
-      display: block;
-      font-size: 11px;
-      color: var(--accent);
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    /* CTA SECTION */
-    .adm-cta {
-      background: var(--accent);
-      border-radius: 10px;
-      padding: 48px 40px;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .adm-cta h2 {
-      font-family: 'Lora', serif;
-      font-size: 28px;
-      color: var(--navy-dark);
-      margin-bottom: 12px;
-    }
-    .adm-cta p {
-      color: rgba(30,42,94,0.75);
-      font-size: 16px;
-      margin-bottom: 28px;
-      line-height: 1.7;
-    }
-    .adm-cta-btn {
-      display: inline-block;
-      background: var(--navy-dark);
-      color: #fff;
-      padding: 14px 32px;
-      border-radius: var(--radius);
-      font-weight: 700;
-      font-size: 15px;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
+    .adm-zone-link span { display: block; font-size: 11px; color: var(--accent); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+    .adm-cta { background: var(--accent); border-radius: 10px; padding: 48px 40px; text-align: center; max-width: 900px; margin: 0 auto; }
+    .adm-cta h2 { font-family: 'Lora', serif; font-size: 28px; color: var(--navy-dark); margin-bottom: 12px; }
+    .adm-cta p { color: rgba(30,42,94,0.75); font-size: 16px; margin-bottom: 28px; line-height: 1.7; }
+    .adm-cta-btn { display: inline-block; background: var(--navy-dark); color: #fff; padding: 14px 32px; border-radius: var(--radius); font-weight: 700; font-size: 15px; text-decoration: none; transition: opacity 0.2s; }
     .adm-cta-btn:hover { opacity: 0.88; }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .adm-hero { flex-direction: column; gap: 32px; padding: 60px 5%; }
-      .adm-hero-badge { display: none; }
-      .adm-cards-grid { grid-template-columns: 1fr 1fr; }
-      .adm-zone-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 640px) {
-      .adm-hero { padding: 48px 5% 40px; }
-      .adm-hero h1 { font-size: 28px; }
-      .adm-hero p { font-size: 15px; }
-      .adm-hero-btns { flex-direction: column; }
-      .adm-section { padding: 48px 5%; }
-      .adm-cards-grid { grid-template-columns: 1fr; }
-      .adm-zone-grid { grid-template-columns: 1fr 1fr; }
-      .adm-cta { padding: 36px 24px; }
-    }
-  </style>
+    .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 5px; flex-shrink: 0; }
+    .mobile-menu-btn span { display: block; width: 22px; height: 2px; background: var(--text-mid); border-radius: 2px; transition: all 0.25s; }
+    .nav-mobile-open .mobile-menu-btn span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-mobile-open .mobile-menu-btn span:nth-child(2) { opacity: 0; }
+    .nav-mobile-open .mobile-menu-btn span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    @media (max-width: 900px) { .adm-hero { flex-direction: column; gap: 32px; padding: 60px 5%; } .adm-hero-badge { display: none; } .adm-cards-grid { grid-template-columns: 1fr 1fr; } .adm-zone-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .mobile-menu-btn { display: flex; } .dropdown-toggle::after { display: none; } .adm-hero { padding: 48px 5% 40px; } .adm-hero h1 { font-size: 28px; } .adm-section { padding: 48px 5%; } .adm-cards-grid { grid-template-columns: 1fr; } .adm-zone-grid { grid-template-columns: 1fr 1fr; } .adm-cta { padding: 36px 24px; } }
+</style>
   <!-- SEO -->
   <meta name="robots" content="index, follow" />
   <meta name="keywords" content="administrator bloc atestat, administrator bloc bucuresti, administrator imobile, atestat legea 196 2018, administrator sector 1 2 3 4 5 6" />
@@ -1376,7 +1160,6 @@
     <li class="has-dropdown">
       <span class="dropdown-toggle">Administrare blocuri</span>
       <div class="dropdown-menu">
-        <a href="pachetstart.html">Administrare bloc — Pachet Start</a>
         <a href="sector1.html">Administrare blocuri Sector 1</a>
         <a href="sector2.html">Administrare blocuri Sector 2</a>
         <a href="sector3.html">Administrare blocuri Sector 3</a>
@@ -1387,6 +1170,8 @@
         <a href="popesti.html">Administrare blocuri Popesti-Leordeni</a>
         <a href="voluntari.html">Administrare blocuri Voluntari</a>
         <a href="ploiesti.html">Administrare blocuri Ploiesti</a>
+        <a href="chiajna.html">Administrare blocuri Chiajna</a>
+        <a href="magurele.html">Administrare blocuri Magurele</a>
       </div>
     </li>
     <li class="has-dropdown">
@@ -1403,6 +1188,8 @@
         <a href="imobilpopesti.html">Administrare imobile Popesti-Leordeni</a>
         <a href="imobilvoluntar.html">Administrare imobile Voluntari</a>
         <a href="imobilploiesti.html">Administrare imobile Ploiesti</a>
+        <a href="imobilechiajna.html">Administrare imobile Chiajna</a>
+        <a href="imobilemagurele.html">Administrare imobile Magurele</a>
       </div>
     </li>
     <li class="has-dropdown">
@@ -1610,7 +1397,6 @@ section[style*="padding:40px"] ul li a:hover {
     <div class="footer-col">
       <h4>Adm. blocuri</h4>
       <ul>
-        <li><a href="pachetstart.html">Pachet Start</a></li>
         <li><a href="sector1.html">Sector 1</a></li>
         <li><a href="sector2.html">Sector 2</a></li>
         <li><a href="sector3.html">Sector 3</a></li>
@@ -1621,6 +1407,8 @@ section[style*="padding:40px"] ul li a:hover {
         <li><a href="popesti.html">Popesti-Leordeni</a></li>
         <li><a href="voluntari.html">Voluntari</a></li>
         <li><a href="ploiesti.html">Ploiesti</a></li>
+        <li><a href="chiajna.html">Chiajna</a></li>
+        <li><a href="magurele.html">Magurele</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1637,6 +1425,8 @@ section[style*="padding:40px"] ul li a:hover {
         <li><a href="imobilpopesti.html">Popesti-Leordeni</a></li>
         <li><a href="imobilvoluntar.html">Voluntari</a></li>
         <li><a href="imobilploiesti.html">Ploiesti</a></li>
+        <li><a href="imobilechiajna.html">Chiajna</a></li>
+        <li><a href="imobilemagurele.html">Magurele</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1685,15 +1475,23 @@ section[style*="padding:40px"] ul li a:hover {
   </div>
 </footer>
 
-<script>
-  const toggles = document.querySelectorAll('.dropdown-toggle');
 
+
+
+
+
+
+
+
+<script>
+  // Dropdown
+  const toggles = document.querySelectorAll('.dropdown-toggle');
   toggles.forEach(function(toggle) {
     const li = toggle.closest('li');
+    if (!li) return;
     toggle.addEventListener('click', function(e) {
       e.stopPropagation();
       const isOpen = li.classList.contains('open');
-      // Inchide toate
       document.querySelectorAll('.nav-links li').forEach(function(el) {
         el.classList.remove('open');
       });
@@ -1706,13 +1504,12 @@ section[style*="padding:40px"] ul li a:hover {
       el.classList.remove('open');
     });
   });
-</script>
-<script>
+
   // Mobile nav
   const mobileBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
   const navEl = document.querySelector('nav');
-  if (mobileBtn) {
+  if (mobileBtn && navLinks && navEl) {
     mobileBtn.addEventListener('click', function(e) {
       e.stopPropagation();
       navLinks.classList.toggle('mobile-open');
@@ -1726,25 +1523,5 @@ section[style*="padding:40px"] ul li a:hover {
     });
   }
 </script>
-
-<script>
-  const mobileBtn2 = document.querySelector('.mobile-menu-btn');
-  const navLinks2 = document.querySelector('.nav-links');
-  const navEl2 = document.querySelector('nav');
-  if (mobileBtn2) {
-    mobileBtn2.addEventListener('click', function(e) {
-      e.stopPropagation();
-      navLinks2.classList.toggle('mobile-open');
-      navEl2.classList.toggle('nav-mobile-open');
-    });
-    document.addEventListener('click', function(e) {
-      if (!navEl2.contains(e.target)) {
-        navLinks2.classList.remove('mobile-open');
-        navEl2.classList.remove('nav-mobile-open');
-      }
-    });
-  }
-</script>
-
 </body>
 </html>

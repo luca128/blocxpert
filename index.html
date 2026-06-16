@@ -12,6 +12,8 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html, body { overflow-x: hidden; max-width: 100%; }
+
     :root {
       --navy: #2E3B7B;
       --navy-dark: #1E2A5E;
@@ -936,17 +938,19 @@
       .dropdown-toggle::after { display: none; }
       .nav-links {
         display: none;
-        position: absolute;
+        position: fixed;
         top: 70px;
         left: 0;
         right: 0;
+        bottom: 0;
         background: var(--bg-white);
         border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
         flex-direction: column;
         padding: 8px 5%;
         gap: 0;
         z-index: 99;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         box-shadow: 0 8px 24px rgba(0,0,0,0.08);
       }
       .nav-links.mobile-open { display: flex; }
@@ -1108,7 +1112,6 @@
     <li class="has-dropdown">
       <span class="dropdown-toggle">Administrare blocuri</span>
       <div class="dropdown-menu">
-        <a href="pachetstart.html">Administrare bloc — Pachet Start</a>
         <a href="sector1.html">Administrare blocuri Sector 1</a>
         <a href="sector2.html">Administrare blocuri Sector 2</a>
         <a href="sector3.html">Administrare blocuri Sector 3</a>
@@ -1119,6 +1122,8 @@
         <a href="popesti.html">Administrare blocuri Popesti-Leordeni</a>
         <a href="voluntari.html">Administrare blocuri Voluntari</a>
         <a href="ploiesti.html">Administrare blocuri Ploiesti</a>
+        <a href="chiajna.html">Administrare blocuri Chiajna</a>
+        <a href="magurele.html">Administrare blocuri Magurele</a>
       </div>
     </li>
     <li class="has-dropdown">
@@ -1135,6 +1140,8 @@
         <a href="imobilpopesti.html">Administrare imobile Popesti-Leordeni</a>
         <a href="imobilvoluntar.html">Administrare imobile Voluntari</a>
         <a href="imobilploiesti.html">Administrare imobile Ploiesti</a>
+        <a href="imobilechiajna.html">Administrare imobile Chiajna</a>
+        <a href="imobilemagurele.html">Administrare imobile Magurele</a>
       </div>
     </li>
     <li class="has-dropdown">
@@ -1181,12 +1188,6 @@
     <p class="section-lead">Oferim servicii de administrare blocuri in sectoarele Bucuresti si in judetul Ilfov.</p>
   </div>
   <div class="zone-grid">
-    <a href="pachetstart.html" class="zone-card">
-      <img src="start.png" alt="Administrare bloc — Pachet Start" />
-      <div class="zone-card-overlay"></div>
-      <span class="zone-card-title">Administrare bloc — Pachet Start</span>
-      <div class="zone-card-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
-    </a>
     <a href="sector1.html" class="zone-card">
       <img src="sector1.png" alt="Administrare blocuri Sector 1" />
       <div class="zone-card-overlay"></div>
@@ -1245,6 +1246,18 @@
       <img src="ploiesti.png" alt="Administrare blocuri Ploiesti" />
       <div class="zone-card-overlay"></div>
       <span class="zone-card-title">Vezi administrare blocuri Ploiesti</span>
+      <div class="zone-card-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
+    </a>
+    <a href="chiajna.html" class="zone-card">
+      <img src="chiajna.png" alt="Administrare blocuri Chiajna" />
+      <div class="zone-card-overlay"></div>
+      <span class="zone-card-title">Vezi administrare blocuri Chiajna</span>
+      <div class="zone-card-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
+    </a>
+    <a href="magurele.html" class="zone-card">
+      <img src="magurele.png" alt="Administrare blocuri Magurele" />
+      <div class="zone-card-overlay"></div>
+      <span class="zone-card-title">Vezi administrare blocuri Magurele</span>
       <div class="zone-card-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
     </a>
   </div>
@@ -1365,6 +1378,26 @@
       <div class="imobil-body">
         <h3>Administrare imobile Ploiesti</h3>
         <p>Servicii de administrare pentru imobilele rezidentiale din Ploiesti.</p>
+      </div>
+      <span class="imobil-arrow">&#8594;</span>
+    </a>
+    <a href="imobilechiajna.html" class="imobil-card">
+      <div class="imobil-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      </div>
+      <div class="imobil-body">
+        <h3>Administrare imobile Chiajna</h3>
+        <p>Servicii de administrare pentru imobilele rezidentiale din Chiajna.</p>
+      </div>
+      <span class="imobil-arrow">&#8594;</span>
+    </a>
+    <a href="imobilemagurele.html" class="imobil-card">
+      <div class="imobil-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      </div>
+      <div class="imobil-body">
+        <h3>Administrare imobile Magurele</h3>
+        <p>Servicii de administrare pentru imobilele rezidentiale din Magurele.</p>
       </div>
       <span class="imobil-arrow">&#8594;</span>
     </a>
@@ -1601,51 +1634,7 @@
         <p class="form-notice">Vei primi un raspuns in cel mai scurt timp posibil.</p>
       </form>
 
-      <script>
-      document.getElementById("contactForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-        var btn = document.getElementById("submitBtn");
-        var msg = document.getElementById("formMsg");
-        btn.disabled = true;
-        btn.textContent = "Se trimite...";
-        msg.style.display = "none";
-
-        var formData = new FormData(this);
-
-        fetch("contact.php", {
-          method: "POST",
-          body: formData
-        })
-        .then(function(r) { return r.json(); })
-        .then(function(data) {
-          msg.style.display = "block";
-          if (data.status === "success") {
-            msg.style.background = "#d1fae5";
-            msg.style.color = "#065f46";
-            msg.style.border = "1px solid #6ee7b7";
-            msg.textContent = data.message;
-            document.getElementById("contactForm").reset();
-            if (typeof hcaptcha !== "undefined") hcaptcha.reset();
-          } else {
-            msg.style.background = "#fee2e2";
-            msg.style.color = "#991b1b";
-            msg.style.border = "1px solid #fca5a5";
-            msg.textContent = data.message;
-          }
-          btn.disabled = false;
-          btn.textContent = "Trimite solicitarea";
-        })
-        .catch(function() {
-          msg.style.display = "block";
-          msg.style.background = "#fee2e2";
-          msg.style.color = "#991b1b";
-          msg.style.border = "1px solid #fca5a5";
-          msg.textContent = "A aparut o eroare. Te rugam sa incerci din nou sau sa ne contactezi direct la info@blocexpertsrl.ro.";
-          btn.disabled = false;
-          btn.textContent = "Trimite solicitarea";
-        });
-      });
-      </script>
+      
     </div>
   </div>
 </section>
@@ -1695,7 +1684,6 @@
     <div class="footer-col">
       <h4>Adm. blocuri</h4>
       <ul>
-        <li><a href="pachetstart.html">Pachet Start</a></li>
         <li><a href="sector1.html">Sector 1</a></li>
         <li><a href="sector2.html">Sector 2</a></li>
         <li><a href="sector3.html">Sector 3</a></li>
@@ -1706,6 +1694,8 @@
         <li><a href="popesti.html">Popesti-Leordeni</a></li>
         <li><a href="voluntari.html">Voluntari</a></li>
         <li><a href="ploiesti.html">Ploiesti</a></li>
+        <li><a href="chiajna.html">Chiajna</a></li>
+        <li><a href="magurele.html">Magurele</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1722,6 +1712,8 @@
         <li><a href="imobilpopesti.html">Popesti-Leordeni</a></li>
         <li><a href="imobilvoluntar.html">Voluntari</a></li>
         <li><a href="imobilploiesti.html">Ploiesti</a></li>
+        <li><a href="imobilechiajna.html">Chiajna</a></li>
+        <li><a href="imobilemagurele.html">Magurele</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1770,15 +1762,17 @@
   </div>
 </footer>
 
-<script>
-  const toggles = document.querySelectorAll('.dropdown-toggle');
 
+
+<script>
+  // Dropdown
+  const toggles = document.querySelectorAll('.dropdown-toggle');
   toggles.forEach(function(toggle) {
     const li = toggle.closest('li');
+    if (!li) return;
     toggle.addEventListener('click', function(e) {
       e.stopPropagation();
       const isOpen = li.classList.contains('open');
-      // Inchide toate
       document.querySelectorAll('.nav-links li').forEach(function(el) {
         el.classList.remove('open');
       });
@@ -1791,13 +1785,12 @@
       el.classList.remove('open');
     });
   });
-</script>
-<script>
+
   // Mobile nav
   const mobileBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
   const navEl = document.querySelector('nav');
-  if (mobileBtn) {
+  if (mobileBtn && navLinks && navEl) {
     mobileBtn.addEventListener('click', function(e) {
       e.stopPropagation();
       navLinks.classList.toggle('mobile-open');
